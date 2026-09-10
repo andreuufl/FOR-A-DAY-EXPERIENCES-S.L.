@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For A Day Experiences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep: #170A06;
+    --bg-deep-2: #200D08;
+    --flame: #FF5A1F;
+    --crimson: #E01B39;
+    --gold: #FFC93C;
+    --electric: #19E8C4;
+    --cream: #FFF6E9;
+    --cream-dim: rgba(255,246,233,0.7);
+    --glass: rgba(255,255,255,0.07);
+    --glass-strong: rgba(255,255,255,0.12);
+    --glass-border: rgba(255,255,255,0.22);
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg-deep);
+    color: var(--cream);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1,h2,h3{ font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 0.01em; }
+  .wrap{ max-width: 1140px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+
+  /* AMBIENT ENERGY BACKGROUND */
+  .energy-field{ position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+  .glow{ position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.55; }
+  .glow-1{ width: 640px; height: 640px; top: -200px; left: -140px; background: radial-gradient(circle, var(--flame), transparent 70%); animation: pulse1 18s ease-in-out infinite; }
+  .glow-2{ width: 560px; height: 560px; top: 5%; right: -180px; background: radial-gradient(circle, var(--crimson), transparent 70%); animation: pulse2 22s ease-in-out infinite; }
+  .glow-3{ width: 520px; height: 520px; bottom: -220px; left: 25%; background: radial-gradient(circle, var(--gold), transparent 70%); opacity: 0.4; animation: pulse1 20s ease-in-out infinite reverse; }
+  .glow-4{ width: 360px; height: 360px; bottom: 10%; right: 6%; background: radial-gradient(circle, var(--electric), transparent 72%); opacity: 0.28; animation: pulse2 16s ease-in-out infinite; }
+  @keyframes pulse1{ 0%,100%{ transform: translate(0,0) scale(1); } 50%{ transform: translate(50px,30px) scale(1.12); } }
+  @keyframes pulse2{ 0%,100%{ transform: translate(0,0) scale(1); } 50%{ transform: translate(-40px,50px) scale(0.92); } }
+  @media (prefers-reduced-motion: reduce){ .glow{ animation: none !important; } }
+
+  .speed-lines{ position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0.12;
+    background: repeating-linear-gradient(115deg, var(--cream) 0px, var(--cream) 1px, transparent 1px, transparent 90px);
+    mask-image: linear-gradient(180deg, black, transparent 70%);
+  }
+
+  /* GLASS PRIMITIVE */
+  .glass{
+    background: var(--glass);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+  }
+
+  /* NAV */
+  nav{ position: sticky; top: 18px; z-index: 30; }
+  nav .navbar{ max-width: 1140px; margin: 0 auto; padding: 14px 26px; display:flex; align-items:center; justify-content:space-between; }
+  .brand{ font-family:'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.03em; }
+  nav a.cta{
+    background: linear-gradient(120deg, var(--flame), var(--crimson));
+    color: var(--cream); padding: 11px 24px; border-radius: 999px; font-size: 0.85rem; text-decoration:none; font-weight: 600;
+    box-shadow: 0 6px 22px rgba(255,90,31,0.35);
+    transition: transform 0.2s ease;
+  }
+  nav a.cta:hover{ transform: translateY(-1px); }
+
+  /* HERO */
+  header.hero{ position: relative; padding: 130px 0 130px; }
+  .hero-inner{ max-width: 840px; }
+  .kicker{
+    display:inline-flex; align-items:center; gap: 10px; margin-bottom: 30px;
+    font-size: 0.85rem; color: var(--cream-dim); padding: 9px 18px; border-radius: 999px; font-weight: 500;
+  }
+  .kicker span.dot{ width: 8px; height: 8px; border-radius: 50%; background: var(--flame); display:inline-block; box-shadow: 0 0 12px var(--flame); }
+  h1.title{ font-size: clamp(3.6rem, 9vw, 6.8rem); line-height: 0.92; color: var(--cream); text-transform: uppercase; }
+  h1.title .fire{
+    background: linear-gradient(100deg, var(--gold), var(--flame) 55%, var(--crimson));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero-sub{ margin-top: 30px; font-size: 1.2rem; color: var(--cream-dim); max-width: 580px; }
+  .hero-actions{ margin-top: 46px; display:flex; gap: 18px; flex-wrap:wrap; }
+  .btn-primary{
+    background: linear-gradient(120deg, var(--flame), var(--crimson));
+    color: var(--cream); padding: 17px 34px; border-radius: 999px; text-decoration:none;
+    font-size: 1rem; font-weight: 700;
+    box-shadow: 0 10px 34px rgba(224,27,57,0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-primary:hover{ transform: translateY(-2px) scale(1.02); box-shadow: 0 14px 40px rgba(224,27,57,0.5); }
+  .btn-ghost{ padding: 17px 8px; color: var(--cream); text-decoration:none; font-size: 1rem; font-weight: 500; border-bottom: 1px solid var(--glass-border); }
+
+  /* SECTIONS */
+  .section{ padding: 90px 0; position: relative; }
+  .section-head{ max-width: 660px; margin-bottom: 56px; }
+  .eyebrow{ color: var(--flame); font-size: 0.85rem; margin-bottom: 14px; font-weight: 600; letter-spacing: 0.02em; }
+  .section-head h2{ font-size: clamp(2.4rem, 5vw, 3.4rem); color: var(--cream); text-transform: uppercase; line-height: 1.02; }
+  .section-head p{ margin-top: 18px; color: var(--cream-dim); font-size: 1.08rem; max-width: 540px; }
+
+  /* EXPERIENCE CARDS */
+  .experiences{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .exp-card{ padding: 0; overflow: hidden; display:flex; flex-direction:column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .exp-card:hover{ transform: translateY(-8px) rotate(-0.3deg); box-shadow: 0 24px 55px rgba(0,0,0,0.4); }
+  .exp-art{ height: 180px; position: relative; overflow: hidden; }
+  .exp-art::after{ content:""; position:absolute; inset:0; background: linear-gradient(180deg, transparent 35%, rgba(23,10,6,0.6)); }
+  .art-1{ background: radial-gradient(circle at 25% 30%, rgba(255,201,60,0.95), transparent 55%), radial-gradient(circle at 80% 75%, rgba(224,27,57,0.85), transparent 55%), linear-gradient(135deg, #2a0e08, #170a06); }
+  .art-2{ background: radial-gradient(circle at 70% 25%, rgba(255,90,31,0.95), transparent 50%), radial-gradient(circle at 20% 80%, rgba(255,201,60,0.8), transparent 55%), linear-gradient(135deg, #2a1206, #170a06); }
+  .art-3{ background: radial-gradient(circle at 50% 35%, rgba(224,27,57,0.9), transparent 55%), radial-gradient(circle at 85% 85%, rgba(25,232,196,0.55), transparent 50%), linear-gradient(135deg, #200a10, #170a06); }
+  .art-4{ background: radial-gradient(circle at 30% 70%, rgba(25,232,196,0.8), transparent 55%), radial-gradient(circle at 75% 25%, rgba(255,90,31,0.75), transparent 55%), linear-gradient(135deg, #0a201c, #170a06); }
+  .art-5{ background: radial-gradient(circle at 65% 65%, rgba(255,201,60,0.9), transparent 55%), radial-gradient(circle at 20% 20%, rgba(25,232,196,0.6), transparent 55%), linear-gradient(135deg, #1c2008, #170a06); }
+  .art-6{ background: radial-gradient(circle at 40% 30%, rgba(224,27,57,0.9), transparent 55%), radial-gradient(circle at 80% 70%, rgba(255,201,60,0.7), transparent 55%), linear-gradient(135deg, #24080f, #170a06); }
+  .exp-body{ padding: 28px 26px 30px; display:flex; flex-direction:column; flex-grow:1; }
+  .exp-tag{ font-size: 0.78rem; color: var(--cream-dim); margin-bottom: 12px; font-weight: 500; }
+  .exp-card h3{ font-size: 1.7rem; color: var(--cream); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.01em; }
+  .exp-card p.desc{ color: var(--cream-dim); font-size: 0.95rem; flex-grow:1; }
+  .exp-price{ margin-top: 24px; display:flex; }
+  .pill{ font-size: 0.78rem; color: var(--cream); background: var(--glass-strong); border: 1px solid var(--glass-border); padding: 8px 18px; border-radius: 999px; font-weight: 500; }
+
+  /* PROCESS */
+  .process{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .step{ padding: 32px 28px; }
+  .step .num{
+    font-family:'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gold);
+    border: 1px solid var(--glass-border); width: 38px; height: 38px; border-radius: 50%;
+    display:flex; align-items:center; justify-content:center; margin-bottom: 22px; background: var(--glass-strong);
+  }
+  .step h3{ font-size: 1.3rem; color: var(--cream); margin-bottom: 10px; text-transform: uppercase; }
+  .step p{ color: var(--cream-dim); font-size: 0.95rem; }
+
+  /* FILM SECTION */
+  .film .wrap{ display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items:center; }
+  .film-frame{
+    aspect-ratio: 4/5; overflow:hidden; position: relative;
+    background: radial-gradient(circle at 30% 20%, rgba(224,27,57,0.6), transparent 55%),
+      radial-gradient(circle at 75% 75%, rgba(255,201,60,0.55), transparent 55%),
+      radial-gradient(circle at 50% 100%, rgba(25,232,196,0.4), transparent 60%),
+      linear-gradient(160deg, #250b10, #170a06);
+    display:flex; align-items:flex-end; padding: 26px;
+  }
+  .film-frame .slate{ font-size: 0.75rem; color: var(--cream-dim); font-family: monospace; }
+  .film h2{ font-size: clamp(2.1rem, 4vw, 2.9rem); margin-bottom: 20px; text-transform: uppercase; }
+  .film p{ color: var(--cream-dim); font-size: 1.04rem; margin-bottom: 16px; max-width: 460px; }
+
+  /* CTA */
+  .closing{ text-align:center; padding: 110px 0 60px; }
+  .closing-card{ padding: 72px 40px; max-width: 800px; margin: 0 auto; }
+  .closing h2{ font-size: clamp(2.4rem, 5.5vw, 3.6rem); margin: 0 auto 22px; text-transform: uppercase; }
+  .closing p{ color: var(--cream-dim); margin-bottom: 36px; }
+
+  footer{ padding: 40px 0 60px; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: 16px; }
+  footer p{ color: var(--cream-dim); font-size: 0.85rem; }
+
+  @media (max-width: 860px){
+    .experiences{ grid-template-columns: 1fr; }
+    .process{ grid-template-columns: 1fr; }
+    .film .wrap{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="energy-field">
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="glow glow-3"></div>
+  <div class="glow glow-4"></div>
+</div>
+<div class="speed-lines"></div>
+
+<nav>
+  <div class="navbar glass">
+    <div class="brand">FOR A DAY</div>
+    <a class="cta" href="#experiencias">Solicitar información</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="kicker glass"><span class="dot"></span> EXPERIENCIAS IRREPETIBLES, RODADAS PARA SIEMPRE</div>
+    <h1 class="title">Serás tú<br>el <span class="fire">protagonista.</span></h1>
+    <p class="hero-sub">Sal al césped ante una grada entera. Siente la pista bajo tus manos a 300&nbsp;km/h. Toma el timón en mar abierto. Cada experiencia se produce con equipo de cine profesional y se te entrega como un cortometraje que podrás ver el resto de tu vida.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#experiencias">Descubre las experiencias</a>
+      <a class="btn-ghost" href="#pelicula">Cómo se rueda tu película</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="experiencias">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Catálogo</div>
+      <h2>Papeles principales, no entradas de grada.</h2>
+      <p>Un número reducido de experiencias al año, negociadas de forma exclusiva con clubes, circuitos, tripulaciones y salas. No es una visita guiada: es tu nombre en la alineación de ese día.</p>
+    </div>
+    <div class="experiences">
+      <div class="exp-card glass">
+        <div class="exp-art art-1"></div>
+        <div class="exp-body">
+          <div class="exp-tag">Fútbol · Estadio icónico</div>
+          <h3>Delantero por un día</h3>
+          <p class="desc">Entrenamiento con cuerpo técnico, calentamiento en el túnel de vestuarios y tu salida al terreno de juego ante la grada, cámara en mano siguiéndote en cada jugada.</p>
+          <div class="exp-price"><span class="pill">Precio bajo consulta</span></div>
+        </div>
+      </div>
+      <div class="exp-card glass">
+        <div class="exp-art art-2"></div>
+        <div class="exp-body">
+          <div class="exp-tag">Fútbol · Estadio icónico</div>
+          <h3>Capitán por un día</h3>
+          <p class="desc">El brazalete, el sorteo con el árbitro, el primer paso al césped delante del resto del equipo. La versión completa, con más tiempo de rodaje y planos exclusivos.</p>
+          <div class="exp-price"><span class="pill">Precio bajo consulta</span></div>
+        </div>
+      </div>
+      <div class="exp-card glass">
+        <div class="exp-art art-3"></div>
+        <div class="exp-body">
+          <div class="exp-tag">Motor · Circuito profesional</div>
+          <h3>Piloto por un día</h3>
+          <p class="desc">Monoplaza real, mono, telemetría y equipo de boxes al completo. Sales a pista con cámaras a bordo y en circuito, guiado por un piloto profesional en cada vuelta.</p>
+          <div class="exp-price"><span class="pill">Precio bajo consulta</span></div>
+        </div>
+      </div>
+      <div class="exp-card glass">
+        <div class="exp-art art-4"></div>
+        <div class="exp-body">
+          <div class="exp-tag">Aviación · Vuelo acrobático</div>
+          <h3>Copiloto de acrobacia</h3>
+          <p class="desc">Vuelas como copiloto de un avión acrobático real: rizos, tirabuzones y varias G's de verdad, con un piloto profesional al mando y cámaras a bordo.</p>
+          <div class="exp-price"><span class="pill">Precio bajo consulta</span></div>
+        </div>
+      </div>
+      <div class="exp-card glass">
+        <div class="exp-art art-5"></div>
+        <div class="exp-body">
+          <div class="exp-tag">Vela · Regata de altura</div>
+          <h3>Patrón por un día</h3>
+          <p class="desc">Timón de un velero de competición, tripulación profesional a bordo y salida a mar abierto como si fueras el patrón en una regata real.</p>
+          <div class="exp-price"><span class="pill">Precio bajo consulta</span></div>
+        </div>
+      </div>
+      <div class="exp-card glass">
+        <div class="exp-art art-6"></div>
+        <div class="exp-body">
+          <div class="exp-tag">Música · Cabina principal</div>
+          <h3>DJ headliner por una noche</h3>
+          <p class="desc">Tu sesión en la cabina principal de una sala o festival, con productor y técnico de sonido profesional a tu lado, ante una pista llena.</p>
+          <div class="exp-price"><span class="pill">Precio bajo consulta</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section process-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">El proceso</div>
+      <h2>Tres pasos, un recuerdo que no caduca.</h2>
+    </div>
+    <div class="process">
+      <div class="step glass">
+        <div class="num">1</div>
+        <h3>Elige tu papel</h3>
+        <p>Hablamos contigo para entender qué historia quieres vivir y qué versión de la experiencia encaja con la ocasión.</p>
+      </div>
+      <div class="step glass">
+        <div class="num">2</div>
+        <h3>Lo vives, de verdad</h3>
+        <p>El día se organiza con los profesionales reales del entorno: entrenadores, pilotos, patrones o técnicos de sonido. Nada de atrezzo.</p>
+      </div>
+      <div class="step glass">
+        <div class="num">3</div>
+        <h3>Recibes tu película</h3>
+        <p>Un equipo de rodaje te sigue durante toda la jornada. Semanas después recibes un cortometraje editado, con música y montaje de nivel documental.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section film" id="pelicula">
+  <div class="wrap">
+    <div class="film-frame glass">
+      <span class="slate">FOR A DAY — SCENE 01 — TAKE 03</span>
+    </div>
+    <div>
+      <div class="eyebrow">La película</div>
+      <h2>No vendemos una tarde. Vendemos el plano que vas a volver a ver.</h2>
+      <p>Cada experiencia lleva un director, un operador de cámara y un montador asignados desde el primer minuto. No es un vídeo recuerdo: es una pieza narrada, con la estructura de un cortometraje real.</p>
+      <p>La entrega incluye el corto final, el material en bruto y una selección de fotografías en alta resolución. Tuyo, para siempre.</p>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <div class="closing-card glass">
+      <h2>¿Qué día quieres que se convierta en leyenda?</h2>
+      <p>Escríbenos y diseñamos la experiencia junto a ti, de principio a fin. Precio siempre bajo consulta.</p>
+      <a class="btn-primary" href="#experiencias">Solicitar información</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="font-size: 1.1rem;">FOR A DAY EXPERIENCES, S.L.</div>
+    <p>Concepto de marca — proyecto en fase de constitución.</p>
+  </div>
+</footer>
+
+</body>
+</html>
