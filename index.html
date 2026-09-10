@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For A Day Experiences</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNGRkM5M0MiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiNGRjVBMUYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRTAxQjM5Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjQwIiBmaWxsPSIjMTcwQTA2Ii8+CiAgPGc+CiAgICA8bGluZSB4MT0iMjYiIHkxPSI4MiIgeDI9Ijc2IiB5Mj0iODYiIHN0cm9rZT0idXJsKCNnKSIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuODUiLz4KICAgIDxsaW5lIHgxPSIyMCIgeTE9IjEwMCIgeDI9IjgyIiB5Mj0iMTAwIiBzdHJva2U9InVybCgjZykiIHN0cm9rZS13aWR0aD0iMTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPGxpbmUgeDE9IjI2IiB5MT0iMTE4IiB4Mj0iNzYiIHkyPSIxMTQiIHN0cm9rZT0idXJsKCNnKSIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuODUiLz4KICAgIDxjaXJjbGUgY3g9IjExOCIgY3k9IjEwMCIgcj0iNDIiIGZpbGw9InVybCgjZykiLz4KICA8L2c+Cjwvc3ZnPgo=">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -167,6 +168,26 @@
     .film .wrap{ grid-template-columns: 1fr; }
     form{ grid-template-columns: 1fr; }
   }
+
+  .brand-lockup{ display:flex; align-items:center; gap: 10px; }
+  .brand-mark{ width: 30px; height: 30px; flex-shrink: 0; }
+  footer .brand-mark{ width: 26px; height: 26px; }
+
+  .whatsapp-btn{
+    position: fixed; bottom: 26px; right: 26px; z-index: 40;
+    display:flex; align-items:center; gap: 10px;
+    background: linear-gradient(120deg, #25D366, #128C7E);
+    color: #fff; text-decoration:none; font-weight:600; font-size: 0.9rem;
+    padding: 14px 20px; border-radius: 999px;
+    box-shadow: 0 10px 28px rgba(18,140,126,0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .whatsapp-btn:hover{ transform: translateY(-2px) scale(1.03); box-shadow: 0 14px 34px rgba(18,140,126,0.55); }
+  .whatsapp-btn svg{ width: 22px; height: 22px; flex-shrink:0; }
+  @media (max-width: 520px){
+    .whatsapp-btn span{ display:none; }
+    .whatsapp-btn{ padding: 14px; }
+  }
 </style>
 </head>
 <body>
@@ -182,7 +203,19 @@
 
 <nav>
   <div class="navbar glass">
-    <div class="brand">FOR A DAY</div>
+    <div class="brand-lockup"><svg class="brand-mark" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="navMarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FFC93C"/>
+        <stop offset="55%" stop-color="#FF5A1F"/>
+        <stop offset="100%" stop-color="#E01B39"/>
+      </linearGradient>
+    </defs>
+    <line x1="6" y1="58" x2="56" y2="62" stroke="url(#navMarkGrad)" stroke-width="9" stroke-linecap="round" opacity="0.85"/>
+    <line x1="0" y1="76" x2="62" y2="76" stroke="url(#navMarkGrad)" stroke-width="10" stroke-linecap="round"/>
+    <line x1="6" y1="94" x2="56" y2="90" stroke="url(#navMarkGrad)" stroke-width="9" stroke-linecap="round" opacity="0.85"/>
+    <circle cx="94" cy="76" r="42" fill="url(#navMarkGrad)"/>
+  </svg><span class="brand">FOR A DAY</span></div>
     <a class="cta" href="#lead">Solicitar información</a>
   </div>
 </nav>
@@ -392,7 +425,19 @@
 
 <footer>
   <div class="wrap">
-    <div class="brand" style="font-size: 1.1rem;">FOR A DAY EXPERIENCES, S.L.</div>
+    <div class="brand-lockup"><svg class="brand-mark" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="navMarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FFC93C"/>
+        <stop offset="55%" stop-color="#FF5A1F"/>
+        <stop offset="100%" stop-color="#E01B39"/>
+      </linearGradient>
+    </defs>
+    <line x1="6" y1="58" x2="56" y2="62" stroke="url(#navMarkGrad)" stroke-width="9" stroke-linecap="round" opacity="0.85"/>
+    <line x1="0" y1="76" x2="62" y2="76" stroke="url(#navMarkGrad)" stroke-width="10" stroke-linecap="round"/>
+    <line x1="6" y1="94" x2="56" y2="90" stroke="url(#navMarkGrad)" stroke-width="9" stroke-linecap="round" opacity="0.85"/>
+    <circle cx="94" cy="76" r="42" fill="url(#navMarkGrad)"/>
+  </svg><span class="brand" style="font-size: 1.1rem;">FOR A DAY EXPERIENCES, S.L.</span></div>
     <p>Concepto de marca — proyecto en fase de constitución.</p>
   </div>
 </footer>
@@ -442,5 +487,10 @@
   attachTilt('.film-frame', 6);
 </script>
 
+
+<a class="whatsapp-btn" href="https://wa.me/34664064968?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20una%20experiencia%20de%20For%20A%20Day%20Experiences." target="_blank" rel="noopener">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.01 3C9.38 3 4 8.34 4 14.93c0 2.45.72 4.72 1.96 6.63L4 29l7.66-1.9a12.9 12.9 0 0 0 4.35.75c6.63 0 12.01-5.34 12.01-11.93S22.64 3 16.01 3zm0 21.6c-1.5 0-2.95-.36-4.22-1.04l-.3-.17-4.55 1.13 1.2-4.44-.2-.31a9.49 9.49 0 0 1-1.5-5.14c0-5.26 4.3-9.53 9.6-9.53 5.29 0 9.6 4.27 9.6 9.53 0 5.26-4.31 9.97-9.63 9.97zm5.3-7.15c-.29-.15-1.7-.84-1.97-.94-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.14-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.45-1.72-1.62-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.24-.57-.48-.49-.65-.5h-.56c-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.43 1.03 2.81 1.17 3 .15.19 2.03 3.1 4.92 4.35.69.3 1.22.47 1.64.61.69.22 1.31.19 1.81.11.55-.08 1.7-.7 1.94-1.37.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/></svg>
+  <span>Escríbenos por WhatsApp</span>
+</a>
 </body>
 </html>
