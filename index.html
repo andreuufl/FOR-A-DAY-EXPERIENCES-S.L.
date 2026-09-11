@@ -70,8 +70,13 @@
   .site-header{ position: sticky; top: 0; z-index: 30; background: rgba(17,9,6,0.92); backdrop-filter: blur(16px) saturate(140%);
     -webkit-backdrop-filter: blur(16px) saturate(140%); border-bottom: 1px solid var(--glass-border); }
   nav .navbar{ max-width: 1140px; margin: 0 auto; padding: 9px 26px; display:flex; align-items:center; justify-content:space-between; gap: 14px; }
-  .brand{ font-family:'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.03em; white-space: nowrap; }
-  .nav-right{ display:flex; align-items:center; gap: 12px; flex-shrink: 0; }
+  .brand-text{ display:flex; flex-direction:column; line-height:1.15; gap:2px; min-width:0; }
+  .brand{ font-family:'Bebas Neue', sans-serif; font-size: 1.15rem; letter-spacing: 0.03em; white-space: nowrap; }
+  .brand-tagline{ font-family:'Space Grotesk', sans-serif; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.18em;
+    color: var(--cream-dim); white-space: nowrap; }
+  .nav-right{ display:flex; align-items:center; gap: 10px; flex-shrink: 1; min-width: 0; }
+  .brand-lockup{ min-width: 0; }
+  .cta-short{ display:none; }
   nav a.cta{ background: linear-gradient(120deg, var(--flame), var(--crimson)); color: var(--cream); padding: 9px 20px;
     border-radius: 999px; font-size: 0.78rem; text-decoration:none; font-weight: 600; box-shadow: 0 6px 22px rgba(255,90,31,0.35);
     transition: transform 0.2s ease; white-space: nowrap; }
@@ -216,15 +221,20 @@
   }
 
   @media (max-width: 640px){
-    nav .navbar{ padding: 10px 16px; gap: 8px; }
-    .brand-mark-chip{ width: 32px; height: 32px; }
-    .brand-mark{ width: 18px; height: 18px; }
-    .brand-suffix{ display:none; }
-    .brand{ font-size: 0.95rem; }
-    .nav-right{ gap: 8px; }
+    nav .navbar{ padding: 10px 14px; gap: 8px; }
+    .brand-mark-chip{ width: 30px; height: 30px; }
+    .brand-mark{ width: 17px; height: 17px; }
+    .brand{ font-size: 0.9rem; }
+    .brand-tagline{ font-size: 0.5rem; }
+    .nav-right{ gap: 6px; }
     nav a.cta{ padding: 9px 14px; font-size: 0.72rem; }
-    .lang-select{ font-size: 0.7rem; padding: 8px 26px 8px 10px; }
+    .lang-select{ font-size: 0.72rem; padding: 8px 22px 8px 9px; background-position: right 7px center; background-size: 11px; }
     .ticker span, .ticker a{ padding: 0 16px; font-size: 0.8rem; }
+  }
+  @media (max-width: 400px){
+    .cta-full{ display:none; }
+    .cta-short{ display:inline; }
+    nav a.cta{ padding: 9px 16px; }
   }
 
   .brand-lockup{ display:flex; align-items:center; gap: 12px; }
@@ -318,13 +328,13 @@
     <line x1="0" y1="76" x2="62" y2="76" stroke="url(#navMarkGrad)" stroke-width="10" stroke-linecap="round"/>
     <line x1="6" y1="94" x2="56" y2="90" stroke="url(#navMarkGrad)" stroke-width="9" stroke-linecap="round" opacity="0.85"/>
     <circle cx="94" cy="76" r="42" fill="url(#navMarkGrad)"/>
-  </svg></div><span class="brand">FOR A DAY<span class="brand-suffix"> EXPERIENCES</span></span></div>
+  </svg></div><div class="brand-text"><span class="brand">FOR A DAY</span><span class="brand-tagline">EXPERIENCES</span></div></div>
     <div class="nav-right">
       <select class="lang-select" id="langSelect" aria-label="Idioma / Language">
-        <option value="es">ES · Español</option>
-        <option value="en">EN · English</option>
+        <option value="es">ES</option>
+        <option value="en">EN</option>
       </select>
-      <a class="cta" href="#lead" i18n="nav.cta">Solicitar información</a>
+      <a class="cta" href="#lead"><span class="cta-full" i18n="nav.cta">Solicitar información</span><span class="cta-short" i18n="nav.ctaShort">Info</span></a>
     </div>
   </div>
 </nav>
@@ -741,6 +751,7 @@
 
 <script>
   var DICT = {
+    "nav.ctaShort": {es:"Info", en:"Info"},
     "swipe.hint": {es:"Desliza para ver más", en:"Swipe to see more"},
     "exp7.tag": {es:"Espacio · Gravedad cero", en:"Space · Zero gravity"},
     "exp7.title": {es:"Astronauta por un día", en:"Astronaut for a day"},
