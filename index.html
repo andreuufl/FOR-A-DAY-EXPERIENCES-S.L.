@@ -250,6 +250,10 @@
   .faq details[open] summary::after{ transform: rotate(45deg); }
   .faq p{ color: var(--cream-dim); font-size: 0.95rem; padding-bottom: 20px; max-width: 620px; }
 
+  .carousel-dots{ display:none; justify-content:center; gap: 7px; margin-top: 2px; }
+  .carousel-dots .dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--glass-border); transition: background 0.2s ease, transform 0.2s ease; }
+  .carousel-dots .dot.active{ background: var(--gold); transform: scale(1.35); }
+
   /* ===== RESPONSIVE (kept at the end on purpose, so these always win the cascade) ===== */
   @media (prefers-reduced-motion: reduce){ .glow{ animation: none !important; } }
 
@@ -267,6 +271,7 @@
     .process::-webkit-scrollbar{ display:none; }
     .step{ flex: 0 0 82%; scroll-snap-align: start; }
     .swipe-hint{ display:flex; }
+    .carousel-dots{ display:flex; }
     .stats{ grid-template-columns: 1fr; gap: 16px; }
     .film .wrap{ grid-template-columns: 1fr; }
     .film-frame{ aspect-ratio: 16/10; }
@@ -431,7 +436,7 @@
       <p i18n="catalog.p">Un número reducido de experiencias al año, negociadas de forma exclusiva con clubes, circuitos, tripulaciones y salas.</p>
     </div>
     <div class="swipe-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 6l6 6-6 6M4 12h16"/></svg><span i18n="swipe.hint">Desliza para ver más</span></div>
-    <div class="experiences">
+    <div class="experiences" id="expCarousel">
       <div class="exp-card glass reveal" id="exp-card-1">
         <div class="exp-art art-1">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M12 6l3.5 2.5-1.3 4.1H9.8L8.5 8.5 12 6z"/><path d="M3 12h5.8M15.2 12H21M9.5 19.5l1.7-3.4M12.8 16.1l1.7 3.4M9.5 4.5l1.7 3.4M12.8 7.9l1.7-3.4"/></svg>
@@ -565,6 +570,7 @@
         </div>
       </div>
     </div>
+    <div class="carousel-dots" id="expDots"></div>
   </div>
 </section>
 
@@ -575,7 +581,7 @@
       <h2 i18n="process.h2">Tres pasos, un recuerdo que no caduca.</h2>
     </div>
     <div class="swipe-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 6l6 6-6 6M4 12h16"/></svg><span i18n="swipe.hint">Desliza para ver más</span></div>
-    <div class="process">
+    <div class="process" id="processCarousel">
       <div class="step glass reveal">
         <div class="num">1</div>
         <h3 i18n="process.s1.title">Elige tu papel</h3>
@@ -592,6 +598,7 @@
         <p i18n="process.s3.desc">Un equipo de rodaje te sigue durante toda la jornada. Semanas después recibes un cortometraje editado, con música y montaje de nivel documental.</p>
       </div>
     </div>
+    <div class="carousel-dots" id="processDots"></div>
   </div>
 </section>
 
@@ -990,6 +997,36 @@
     statEls.forEach(function(el){ statIo.observe(el); });
   }
 
+
+
+  // Carousel dots (mobile swipe indicators for the catalogue and the process carousels)
+  function initCarouselDots(carouselId, dotsId){
+    var carousel = document.getElementById(carouselId);
+    var dotsWrap = document.getElementById(dotsId);
+    if(!carousel || !dotsWrap) return;
+    var items = carousel.children;
+    dotsWrap.innerHTML = '';
+    for(var i=0;i<items.length;i++){
+      var d = document.createElement('span');
+      d.className = 'dot' + (i===0 ? ' active' : '');
+      dotsWrap.appendChild(d);
+    }
+    var dots = dotsWrap.children;
+    var ticking = false;
+    carousel.addEventListener('scroll', function(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        var cardWidth = items[0] ? items[0].getBoundingClientRect().width + 16 : 1;
+        var idx = Math.round(carousel.scrollLeft / cardWidth);
+        idx = Math.max(0, Math.min(idx, dots.length - 1));
+        for(var i=0;i<dots.length;i++){ dots[i].classList.toggle('active', i === idx); }
+        ticking = false;
+      });
+    });
+  }
+  initCarouselDots('expCarousel', 'expDots');
+  initCarouselDots('processCarousel', 'processDots');
 
   applyLang('es');
 </script>
