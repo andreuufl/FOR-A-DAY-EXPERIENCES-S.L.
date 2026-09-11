@@ -191,6 +191,13 @@
     .whatsapp-btn span{ display:none; }
     .whatsapp-btn{ padding: 14px; }
   }
+
+  .lang-switch{ display:flex; gap: 6px; margin-right: 6px; }
+  .lang-btn{ background: transparent; border: 1px solid var(--glass-border); color: var(--cream-dim);
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 600; padding: 7px 11px;
+    border-radius: 999px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; }
+  .lang-btn.active{ background: var(--glass-strong); color: var(--cream); border-color: var(--cream-dim); }
+  @media (max-width: 640px){ nav .navbar{ flex-wrap: wrap; gap: 10px; } }
 </style>
 </head>
 <body>
@@ -219,37 +226,38 @@
     <line x1="6" y1="94" x2="56" y2="90" stroke="url(#navMarkGrad)" stroke-width="9" stroke-linecap="round" opacity="0.85"/>
     <circle cx="94" cy="76" r="42" fill="url(#navMarkGrad)"/>
   </svg></div><span class="brand">FOR A DAY</span></div>
-    <a class="cta" href="#lead">Solicitar información</a>
+    <div class="lang-switch"><button type="button" class="lang-btn" data-lang-btn="es">ES</button><button type="button" class="lang-btn" data-lang-btn="en">EN</button></div>
+    <a class="cta" href="#lead" i18n="nav.cta">Solicitar información</a>
   </div>
 </nav>
 
 <div class="ticker-wrap">
   <div class="ticker">
     <span>FOR A DAY EXPERIENCES, S.L.</span>
-    <span>DELANTERO POR UN DÍA</span>
-    <span>CAPITÁN POR UN DÍA</span>
-    <span>PILOTO POR UN DÍA</span>
-    <span>COPILOTO DE ACROBACIA</span>
-    <span>PATRÓN POR UN DÍA</span>
-    <span>DJ HEADLINER POR UNA NOCHE</span>
+    <span i18n="ticker.exp1"></span>
+    <span i18n="ticker.exp2"></span>
+    <span i18n="ticker.exp3"></span>
+    <span i18n="ticker.exp4"></span>
+    <span i18n="ticker.exp5"></span>
+    <span i18n="ticker.exp6"></span>
     <span>FOR A DAY EXPERIENCES, S.L.</span>
-    <span>DELANTERO POR UN DÍA</span>
-    <span>CAPITÁN POR UN DÍA</span>
-    <span>PILOTO POR UN DÍA</span>
-    <span>COPILOTO DE ACROBACIA</span>
-    <span>PATRÓN POR UN DÍA</span>
-    <span>DJ HEADLINER POR UNA NOCHE</span>
+    <span i18n="ticker.exp1"></span>
+    <span i18n="ticker.exp2"></span>
+    <span i18n="ticker.exp3"></span>
+    <span i18n="ticker.exp4"></span>
+    <span i18n="ticker.exp5"></span>
+    <span i18n="ticker.exp6"></span>
   </div>
 </div>
 
 <header class="hero">
   <div class="wrap hero-inner">
     <div class="kicker glass"><span class="dot"></span> FOR A DAY EXPERIENCES, S.L.</div>
-    <h1 class="title">Serás tú<br>el <span class="fire">protagonista.</span></h1>
-    <p class="hero-sub">Sal al césped ante una grada entera. Siente la pista bajo tus manos a 300&nbsp;km/h. Toma el timón en mar abierto. Cada experiencia se produce con equipo de cine profesional y se te entrega como un cortometraje que podrás ver el resto de tu vida.</p>
+    <h1 class="title" i18n-html="hero.title">Serás tú<br>el <span class="fire">protagonista.</span></h1>
+    <p class="hero-sub" i18n-html="hero.sub">Sal al césped ante una grada entera. Siente la pista bajo tus manos a 300&nbsp;km/h. Toma el timón en mar abierto. Cada experiencia se produce con equipo de cine profesional y se te entrega como un cortometraje que podrás ver el resto de tu vida.</p>
     <div class="hero-actions">
-      <a class="btn-primary" href="#experiencias">Descubre las experiencias</a>
-      <a class="btn-ghost" href="#pelicula">Cómo se rueda tu película</a>
+      <a class="btn-primary" href="#experiencias" i18n="hero.ctaExp">Descubre las experiencias</a>
+      <a class="btn-ghost" href="#pelicula" i18n="hero.ctaFilm">Cómo se rueda tu película</a>
     </div>
   </div>
 </header>
@@ -257,9 +265,9 @@
 <section class="section" id="experiencias">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">Catálogo</div>
-      <h2>Papeles principales, no entradas de grada.</h2>
-      <p>Un número reducido de experiencias al año, negociadas de forma exclusiva con clubes, circuitos, tripulaciones y salas.</p>
+      <div class="eyebrow" i18n="catalog.eyebrow">Catálogo</div>
+      <h2 i18n="catalog.h2">Papeles principales, no entradas de grada.</h2>
+      <p i18n="catalog.p">Un número reducido de experiencias al año, negociadas de forma exclusiva con clubes, circuitos, tripulaciones y salas.</p>
     </div>
     <div class="experiences">
       <div class="exp-card glass reveal">
@@ -267,10 +275,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M12 6l3.5 2.5-1.3 4.1H9.8L8.5 8.5 12 6z"/><path d="M3 12h5.8M15.2 12H21M9.5 19.5l1.7-3.4M12.8 16.1l1.7 3.4M9.5 4.5l1.7 3.4M12.8 7.9l1.7-3.4"/></svg>
         </div>
         <div class="exp-body">
-          <div class="exp-tag">Fútbol · Estadio icónico</div>
-          <h3>Delantero por un día</h3>
-          <p class="desc">Entrenamiento con cuerpo técnico, calentamiento en el túnel de vestuarios y tu salida al terreno de juego ante la grada, cámara en mano siguiéndote en cada jugada.</p>
-          <div class="exp-price"><span class="pill">Precio bajo consulta</span></div>
+          <div class="exp-tag" i18n="exp1.tag">Fútbol · Estadio icónico</div>
+          <h3 i18n="exp1.title">Delantero por un día</h3>
+          <p class="desc" i18n="exp1.desc">Entrenamiento con cuerpo técnico, calentamiento en el túnel de vestuarios y tu salida al terreno de juego ante la grada, cámara en mano siguiéndote en cada jugada.</p>
+          <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
         </div>
       </div>
       <div class="exp-card glass reveal">
@@ -278,10 +286,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/><path d="M4 10l8 4 8-4"/></svg>
         </div>
         <div class="exp-body">
-          <div class="exp-tag">Fútbol · Estadio icónico</div>
-          <h3>Capitán por un día</h3>
-          <p class="desc">El brazalete, el sorteo con el árbitro, el primer paso al césped delante del resto del equipo. La versión completa, con más tiempo de rodaje y planos exclusivos.</p>
-          <div class="exp-price"><span class="pill">Precio bajo consulta</span></div>
+          <div class="exp-tag" i18n="exp2.tag">Fútbol · Estadio icónico</div>
+          <h3 i18n="exp2.title">Capitán por un día</h3>
+          <p class="desc" i18n="exp2.desc">El brazalete, el sorteo con el árbitro, el primer paso al césped delante del resto del equipo. La versión completa, con más tiempo de rodaje y planos exclusivos.</p>
+          <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
         </div>
       </div>
       <div class="exp-card glass reveal">
@@ -289,10 +297,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 5V2M12 22v-3M5 12H2M22 12h-3M7 7L5 5M19 5l-2 2M7 17l-2 2M19 19l-2-2"/></svg>
         </div>
         <div class="exp-body">
-          <div class="exp-tag">Motor · Circuito profesional</div>
-          <h3>Piloto por un día</h3>
-          <p class="desc">Monoplaza real, mono, telemetría y equipo de boxes al completo. Sales a pista con cámaras a bordo y en circuito, guiado por un piloto profesional en cada vuelta.</p>
-          <div class="exp-price"><span class="pill">Precio bajo consulta</span></div>
+          <div class="exp-tag" i18n="exp3.tag">Motor · Circuito profesional</div>
+          <h3 i18n="exp3.title">Piloto por un día</h3>
+          <p class="desc" i18n="exp3.desc">Monoplaza real, mono, telemetría y equipo de boxes al completo. Sales a pista con cámaras a bordo y en circuito, guiado por un piloto profesional en cada vuelta.</p>
+          <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
         </div>
       </div>
       <div class="exp-card glass reveal">
@@ -300,10 +308,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 16l7-2 5-9 2 1-3 8 6-1 3 3-8 2-2 4-2-1 1-4-6 1-3-2z"/></svg>
         </div>
         <div class="exp-body">
-          <div class="exp-tag">Aviación · Vuelo acrobático</div>
-          <h3>Copiloto de acrobacia</h3>
-          <p class="desc">Vuelas como copiloto de un avión acrobático real: rizos, tirabuzones y varias G's de verdad, con un piloto profesional al mando y cámaras a bordo.</p>
-          <div class="exp-price"><span class="pill">Precio bajo consulta</span></div>
+          <div class="exp-tag" i18n="exp4.tag">Aviación · Vuelo acrobático</div>
+          <h3 i18n="exp4.title">Copiloto de acrobacia</h3>
+          <p class="desc" i18n="exp4.desc">Vuelas como copiloto de un avión acrobático real: rizos, tirabuzones y varias G's de verdad, con un piloto profesional al mando y cámaras a bordo.</p>
+          <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
         </div>
       </div>
       <div class="exp-card glass reveal">
@@ -311,10 +319,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 19h16M12 19V4l6 9-6 2M9 19l1-6"/></svg>
         </div>
         <div class="exp-body">
-          <div class="exp-tag">Vela · Regata de altura</div>
-          <h3>Patrón por un día</h3>
-          <p class="desc">Timón de un velero de competición, tripulación profesional a bordo y salida a mar abierto como si fueras el patrón en una regata real.</p>
-          <div class="exp-price"><span class="pill">Precio bajo consulta</span></div>
+          <div class="exp-tag" i18n="exp5.tag">Vela · Regata de altura</div>
+          <h3 i18n="exp5.title">Patrón por un día</h3>
+          <p class="desc" i18n="exp5.desc">Timón de un velero de competición, tripulación profesional a bordo y salida a mar abierto como si fueras el patrón en una regata real.</p>
+          <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
         </div>
       </div>
       <div class="exp-card glass reveal">
@@ -322,10 +330,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4"/><path d="M12 3v2M20 12h-2"/></svg>
         </div>
         <div class="exp-body">
-          <div class="exp-tag">Música · Cabina principal</div>
-          <h3>DJ headliner por una noche</h3>
-          <p class="desc">Tu sesión en la cabina principal de una sala o festival, con productor y técnico de sonido profesional a tu lado, ante una pista llena.</p>
-          <div class="exp-price"><span class="pill">Precio bajo consulta</span></div>
+          <div class="exp-tag" i18n="exp6.tag">Música · Cabina principal</div>
+          <h3 i18n="exp6.title">DJ headliner por una noche</h3>
+          <p class="desc" i18n="exp6.desc">Tu sesión en la cabina principal de una sala o festival, con productor y técnico de sonido profesional a tu lado, ante una pista llena.</p>
+          <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
         </div>
       </div>
     </div>
@@ -335,24 +343,24 @@
 <section class="section process-section">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">El proceso</div>
-      <h2>Tres pasos, un recuerdo que no caduca.</h2>
+      <div class="eyebrow" i18n="process.eyebrow">El proceso</div>
+      <h2 i18n="process.h2">Tres pasos, un recuerdo que no caduca.</h2>
     </div>
     <div class="process">
       <div class="step glass reveal">
         <div class="num">1</div>
-        <h3>Elige tu papel</h3>
-        <p>Hablamos contigo para entender qué historia quieres vivir y qué versión de la experiencia encaja con la ocasión.</p>
+        <h3 i18n="process.s1.title">Elige tu papel</h3>
+        <p i18n="process.s1.desc">Hablamos contigo para entender qué historia quieres vivir y qué versión de la experiencia encaja con la ocasión.</p>
       </div>
       <div class="step glass reveal">
         <div class="num">2</div>
-        <h3>Lo vives, de verdad</h3>
-        <p>El día se organiza con los profesionales reales del entorno: entrenadores, pilotos, patrones o técnicos de sonido. Nada de atrezzo.</p>
+        <h3 i18n="process.s2.title">Lo vives, de verdad</h3>
+        <p i18n="process.s2.desc">El día se organiza con los profesionales reales del entorno: entrenadores, pilotos, patrones o técnicos de sonido. Nada de atrezzo.</p>
       </div>
       <div class="step glass reveal">
         <div class="num">3</div>
-        <h3>Recibes tu película</h3>
-        <p>Un equipo de rodaje te sigue durante toda la jornada. Semanas después recibes un cortometraje editado, con música y montaje de nivel documental.</p>
+        <h3 i18n="process.s3.title">Recibes tu película</h3>
+        <p i18n="process.s3.desc">Un equipo de rodaje te sigue durante toda la jornada. Semanas después recibes un cortometraje editado, con música y montaje de nivel documental.</p>
       </div>
     </div>
   </div>
@@ -364,10 +372,10 @@
       <span class="slate">FOR A DAY — SCENE 01 — TAKE 03</span>
     </div>
     <div class="reveal">
-      <div class="eyebrow">La película</div>
-      <h2>No vendemos una tarde. Vendemos el plano que vas a volver a ver.</h2>
-      <p>Cada experiencia lleva un director, un operador de cámara y un montador asignados desde el primer minuto. No es un vídeo recuerdo: es una pieza narrada, con la estructura de un cortometraje real.</p>
-      <p>La entrega incluye el corto final, el material en bruto y una selección de fotografías en alta resolución. Tuyo, para siempre.</p>
+      <div class="eyebrow" i18n="film.eyebrow">La película</div>
+      <h2 i18n="film.h2">No vendemos una tarde. Vendemos el plano que vas a volver a ver.</h2>
+      <p i18n="film.p1">Cada experiencia lleva un director, un operador de cámara y un montador asignados desde el primer minuto. No es un vídeo recuerdo: es una pieza narrada, con la estructura de un cortometraje real.</p>
+      <p i18n="film.p2">La entrega incluye el corto final, el material en bruto y una selección de fotografías en alta resolución. Tuyo, para siempre.</p>
     </div>
   </div>
 </section>
@@ -375,41 +383,41 @@
 <section class="section lead" id="lead">
   <div class="wrap">
     <div class="lead-card glass reveal">
-      <div class="eyebrow">Solicita información</div>
-      <h2>Cuéntanos qué día quieres vivir</h2>
-      <p>Rellena el formulario y un miembro del equipo te contacta en menos de 24h para diseñar la experiencia contigo.</p>
+      <div class="eyebrow" i18n="lead.eyebrow">Solicita información</div>
+      <h2 i18n="lead.h2">Cuéntanos qué día quieres vivir</h2>
+      <p i18n="lead.p">Rellena el formulario y un miembro del equipo te contacta en menos de 24h para diseñar la experiencia contigo.</p>
       <form onsubmit="event.preventDefault(); this.querySelector('.form-note').style.display='block';">
         <div>
-          <label for="name">Nombre y apellidos</label>
-          <input id="name" type="text" placeholder="Tu nombre" required>
+          <label for="name" i18n="form.name">Nombre y apellidos</label>
+          <input id="name" type="text" placeholder="Tu nombre" i18n-placeholder="form.name.ph" required>
         </div>
         <div>
-          <label for="email">Email</label>
+          <label for="email" i18n="form.email">Email</label>
           <input id="email" type="email" placeholder="tu@email.com" required>
         </div>
         <div>
-          <label for="phone">Teléfono</label>
+          <label for="phone" i18n="form.phone">Teléfono</label>
           <input id="phone" type="tel" placeholder="+34 600 000 000">
         </div>
         <div>
-          <label for="exp">Experiencia de interés</label>
+          <label for="exp" i18n="form.expLabel">Experiencia de interés</label>
           <select id="exp">
-            <option>Delantero por un día</option>
-            <option>Capitán por un día</option>
-            <option>Piloto por un día</option>
-            <option>Copiloto de acrobacia</option>
-            <option>Patrón por un día</option>
-            <option>DJ headliner por una noche</option>
-            <option>Quiero algo a medida</option>
+            <option i18n="ticker.exp1">Delantero por un día</option>
+            <option i18n="ticker.exp2">Capitán por un día</option>
+            <option i18n="ticker.exp3">Piloto por un día</option>
+            <option i18n="ticker.exp4">Copiloto de acrobacia</option>
+            <option i18n="ticker.exp5">Patrón por un día</option>
+            <option i18n="ticker.exp6">DJ headliner por una noche</option>
+            <option i18n="form.custom">Quiero algo a medida</option>
           </select>
         </div>
         <div class="full">
-          <label for="msg">Cuéntanos la ocasión</label>
-          <textarea id="msg" placeholder="Un cumpleaños, un logro, un capricho..."></textarea>
+          <label for="msg" i18n="form.msg">Cuéntanos la ocasión</label>
+          <textarea id="msg" placeholder="Un cumpleaños, un logro, un capricho..." i18n-placeholder="form.msg.ph"></textarea>
         </div>
         <div class="full">
-          <button class="btn-primary" type="submit">Enviar solicitud</button>
-          <p class="form-note" style="display:none; margin-top:14px; color: var(--electric); font-size:0.9rem;">Gracias — este formulario es un prototipo de diseño todavía sin conectar a un envío real. Antes de publicarlo, hay que enlazarlo a un email o CRM.</p>
+          <button class="btn-primary" type="submit" i18n="form.submit">Enviar solicitud</button>
+          <p class="form-note" style="display:none; margin-top:14px; color: var(--electric); font-size:0.9rem;" i18n="form.note">Gracias — este formulario es un prototipo de diseño todavía sin conectar a un envío real. Antes de publicarlo, hay que enlazarlo a un email o CRM.</p>
         </div>
       </form>
     </div>
@@ -419,9 +427,9 @@
 <section class="closing">
   <div class="wrap">
     <div class="closing-card glass reveal">
-      <h2>¿Qué día quieres que se convierta en leyenda?</h2>
-      <p>Escríbenos y diseñamos la experiencia junto a ti, de principio a fin. Precio siempre bajo consulta.</p>
-      <a class="btn-primary" href="#lead">Solicitar información</a>
+      <h2 i18n="closing.h2">¿Qué día quieres que se convierta en leyenda?</h2>
+      <p i18n="closing.p">Escríbenos y diseñamos la experiencia junto a ti, de principio a fin. Precio siempre bajo consulta.</p>
+      <a class="btn-primary" href="#lead" i18n="nav.cta">Solicitar información</a>
     </div>
   </div>
 </section>
@@ -441,7 +449,7 @@
     <line x1="6" y1="94" x2="56" y2="90" stroke="url(#navMarkGrad2)" stroke-width="9" stroke-linecap="round" opacity="0.85"/>
     <circle cx="94" cy="76" r="42" fill="url(#navMarkGrad2)"/>
   </svg></div><span class="brand" style="font-size: 1.1rem;">FOR A DAY EXPERIENCES, S.L.</span></div>
-    <p>Concepto de marca — proyecto en fase de constitución.</p>
+    <p i18n="footer.note">Concepto de marca — proyecto en fase de constitución.</p>
   </div>
 </footer>
 
@@ -491,9 +499,124 @@
 </script>
 
 
-<a class="whatsapp-btn" href="https://wa.me/34664064968?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20una%20experiencia%20de%20For%20A%20Day%20Experiences." target="_blank" rel="noopener">
+<a class="whatsapp-btn" id="waBtn" href="https://wa.me/34664064968?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20una%20experiencia%20de%20For%20A%20Day%20Experiences." target="_blank" rel="noopener">
   <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.01 3C9.38 3 4 8.34 4 14.93c0 2.45.72 4.72 1.96 6.63L4 29l7.66-1.9a12.9 12.9 0 0 0 4.35.75c6.63 0 12.01-5.34 12.01-11.93S22.64 3 16.01 3zm0 21.6c-1.5 0-2.95-.36-4.22-1.04l-.3-.17-4.55 1.13 1.2-4.44-.2-.31a9.49 9.49 0 0 1-1.5-5.14c0-5.26 4.3-9.53 9.6-9.53 5.29 0 9.6 4.27 9.6 9.53 0 5.26-4.31 9.97-9.63 9.97zm5.3-7.15c-.29-.15-1.7-.84-1.97-.94-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.14-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.45-1.72-1.62-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.24-.57-.48-.49-.65-.5h-.56c-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.43 1.03 2.81 1.17 3 .15.19 2.03 3.1 4.92 4.35.69.3 1.22.47 1.64.61.69.22 1.31.19 1.81.11.55-.08 1.7-.7 1.94-1.37.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/></svg>
-  <span>Escríbenos por WhatsApp</span>
+  <span i18n="wa.label">Escríbenos por WhatsApp</span>
 </a>
+
+<script>
+  var DICT = {
+    "nav.cta": {es:"Solicitar información", en:"Request information"},
+    "ticker.exp1": {es:"Delantero por un día", en:"Striker for a day"},
+    "ticker.exp2": {es:"Capitán por un día", en:"Captain for a day"},
+    "ticker.exp3": {es:"Piloto por un día", en:"Driver for a day"},
+    "ticker.exp4": {es:"Copiloto de acrobacia", en:"Aerobatic co-pilot"},
+    "ticker.exp5": {es:"Patrón por un día", en:"Skipper for a day"},
+    "ticker.exp6": {es:"DJ headliner por una noche", en:"Headline DJ for a night"},
+    "hero.title": {es:'Serás tú<br>el <span class="fire">protagonista.</span>', en:'You will be<br>the <span class="fire">protagonist.</span>'},
+    "hero.sub": {es:"Sal al césped ante una grada entera. Siente la pista bajo tus manos a 300&nbsp;km/h. Toma el timón en mar abierto. Cada experiencia se produce con equipo de cine profesional y se te entrega como un cortometraje que podrás ver el resto de tu vida.",
+                 en:"Walk onto the pitch in front of a full stadium. Feel the track under your hands at 300&nbsp;km/h. Take the helm on open water. Every experience is produced by a professional film crew and delivered to you as a short film you'll watch for the rest of your life."},
+    "hero.ctaExp": {es:"Descubre las experiencias", en:"Discover the experiences"},
+    "hero.ctaFilm": {es:"Cómo se rueda tu película", en:"How your film gets made"},
+    "catalog.eyebrow": {es:"Catálogo", en:"Catalogue"},
+    "catalog.h2": {es:"Papeles principales, no entradas de grada.", en:"Leading roles, not seats in the stands."},
+    "catalog.p": {es:"Un número reducido de experiencias al año, negociadas de forma exclusiva con clubes, circuitos, tripulaciones y salas.",
+                  en:"A limited number of experiences each year, arranged exclusively with clubs, circuits, crews and venues."},
+    "exp1.tag": {es:"Fútbol · Estadio icónico", en:"Football · Iconic stadium"},
+    "exp1.title": {es:"Delantero por un día", en:"Striker for a day"},
+    "exp1.desc": {es:"Entrenamiento con cuerpo técnico, calentamiento en el túnel de vestuarios y tu salida al terreno de juego ante la grada, cámara en mano siguiéndote en cada jugada.",
+                  en:"Train with the coaching staff, warm up in the players' tunnel, and walk out onto the pitch in front of the stands, with a camera following your every move."},
+    "exp2.tag": {es:"Fútbol · Estadio icónico", en:"Football · Iconic stadium"},
+    "exp2.title": {es:"Capitán por un día", en:"Captain for a day"},
+    "exp2.desc": {es:"El brazalete, el sorteo con el árbitro, el primer paso al césped delante del resto del equipo. La versión completa, con más tiempo de rodaje y planos exclusivos.",
+                  en:"The armband, the coin toss with the referee, the first step onto the pitch ahead of the rest of the team. The full version, with more filming time and exclusive shots."},
+    "exp3.tag": {es:"Motor · Circuito profesional", en:"Motorsport · Professional circuit"},
+    "exp3.title": {es:"Piloto por un día", en:"Driver for a day"},
+    "exp3.desc": {es:"Monoplaza real, mono, telemetría y equipo de boxes al completo. Sales a pista con cámaras a bordo y en circuito, guiado por un piloto profesional en cada vuelta.",
+                  en:"A real single-seater, race suit, telemetry and a full pit crew. You take to the track with onboard and trackside cameras, guided lap by lap by a professional driver."},
+    "exp4.tag": {es:"Aviación · Vuelo acrobático", en:"Aviation · Aerobatic flight"},
+    "exp4.title": {es:"Copiloto de acrobacia", en:"Aerobatic co-pilot"},
+    "exp4.desc": {es:"Vuelas como copiloto de un avión acrobático real: rizos, tirabuzones y varias G's de verdad, con un piloto profesional al mando y cámaras a bordo.",
+                  en:"Fly as co-pilot of a real aerobatic aircraft: loops, spins and real G-forces, with a professional pilot at the controls and cameras onboard."},
+    "exp5.tag": {es:"Vela · Regata de altura", en:"Sailing · Offshore regatta"},
+    "exp5.title": {es:"Patrón por un día", en:"Skipper for a day"},
+    "exp5.desc": {es:"Timón de un velero de competición, tripulación profesional a bordo y salida a mar abierto como si fueras el patrón en una regata real.",
+                  en:"Take the helm of a racing yacht with a professional crew on board, heading out into open water as skipper in a real regatta."},
+    "exp6.tag": {es:"Música · Cabina principal", en:"Music · Main booth"},
+    "exp6.title": {es:"DJ headliner por una noche", en:"Headline DJ for a night"},
+    "exp6.desc": {es:"Tu sesión en la cabina principal de una sala o festival, con productor y técnico de sonido profesional a tu lado, ante una pista llena.",
+                  en:"Your set in the main booth of a club or festival, with a producer and professional sound engineer by your side, in front of a packed floor."},
+    "card.pill": {es:"Precio bajo consulta", en:"Price upon request"},
+    "process.eyebrow": {es:"El proceso", en:"The process"},
+    "process.h2": {es:"Tres pasos, un recuerdo que no caduca.", en:"Three steps, one memory that never fades."},
+    "process.s1.title": {es:"Elige tu papel", en:"Choose your role"},
+    "process.s1.desc": {es:"Hablamos contigo para entender qué historia quieres vivir y qué versión de la experiencia encaja con la ocasión.",
+                         en:"We talk with you to understand what story you want to live, and which version of the experience fits the occasion."},
+    "process.s2.title": {es:"Lo vives, de verdad", en:"You live it, for real"},
+    "process.s2.desc": {es:"El día se organiza con los profesionales reales del entorno: entrenadores, pilotos, patrones o técnicos de sonido. Nada de atrezzo.",
+                         en:"The day is run with the real professionals of that world: coaches, drivers, skippers or sound engineers. No props, no acting."},
+    "process.s3.title": {es:"Recibes tu película", en:"You receive your film"},
+    "process.s3.desc": {es:"Un equipo de rodaje te sigue durante toda la jornada. Semanas después recibes un cortometraje editado, con música y montaje de nivel documental.",
+                         en:"A film crew follows you throughout the day. Weeks later you receive an edited short film, with music and documentary-level editing."},
+    "film.eyebrow": {es:"La película", en:"The film"},
+    "film.h2": {es:"No vendemos una tarde. Vendemos el plano que vas a volver a ver.", en:"We don't sell an afternoon. We sell the shot you'll watch again."},
+    "film.p1": {es:"Cada experiencia lleva un director, un operador de cámara y un montador asignados desde el primer minuto. No es un vídeo recuerdo: es una pieza narrada, con la estructura de un cortometraje real.",
+                en:"Every experience has a director, camera operator and editor assigned from minute one. This isn't a souvenir video — it's a narrated piece, structured like a real short film."},
+    "film.p2": {es:"La entrega incluye el corto final, el material en bruto y una selección de fotografías en alta resolución. Tuyo, para siempre.",
+                en:"Delivery includes the final short film, the raw footage and a selection of high-resolution photographs. Yours, forever."},
+    "lead.eyebrow": {es:"Solicita información", en:"Request information"},
+    "lead.h2": {es:"Cuéntanos qué día quieres vivir", en:"Tell us what day you want to live"},
+    "lead.p": {es:"Rellena el formulario y un miembro del equipo te contacta en menos de 24h para diseñar la experiencia contigo.",
+               en:"Fill out the form and a member of the team will contact you within 24h to design the experience with you."},
+    "form.name": {es:"Nombre y apellidos", en:"Full name"},
+    "form.name.ph": {es:"Tu nombre", en:"Your name"},
+    "form.email": {es:"Email", en:"Email"},
+    "form.phone": {es:"Teléfono", en:"Phone"},
+    "form.expLabel": {es:"Experiencia de interés", en:"Experience of interest"},
+    "form.custom": {es:"Quiero algo a medida", en:"I want something bespoke"},
+    "form.msg": {es:"Cuéntanos la ocasión", en:"Tell us the occasion"},
+    "form.msg.ph": {es:"Un cumpleaños, un logro, un capricho...", en:"A birthday, an achievement, a treat..."},
+    "form.submit": {es:"Enviar solicitud", en:"Send request"},
+    "form.note": {es:"Gracias — este formulario es un prototipo de diseño todavía sin conectar a un envío real. Antes de publicarlo, hay que enlazarlo a un email o CRM.",
+                  en:"Thank you — this form is a design prototype not yet connected to a real submission. Before publishing, it needs to be linked to an email or CRM."},
+    "closing.h2": {es:"¿Qué día quieres que se convierta en leyenda?", en:"Which day do you want to become legend?"},
+    "closing.p": {es:"Escríbenos y diseñamos la experiencia junto a ti, de principio a fin. Precio siempre bajo consulta.",
+                  en:"Write to us and we'll design the experience together, from start to finish. Price always upon request."},
+    "footer.note": {es:"Concepto de marca — proyecto en fase de constitución.", en:"Brand concept — project currently being incorporated."},
+    "wa.label": {es:"Escríbenos por WhatsApp", en:"Message us on WhatsApp"}
+  };
+
+  var WA_MSG = {
+    es: "Hola, quiero más información sobre una experiencia de For A Day Experiences.",
+    en: "Hi, I'd like more information about a For A Day Experiences experience."
+  };
+
+  function applyLang(lang){
+    document.querySelectorAll('[i18n]').forEach(function(el){
+      var k = el.getAttribute('i18n');
+      if(DICT[k]) el.textContent = DICT[k][lang];
+    });
+    document.querySelectorAll('[i18n-html]').forEach(function(el){
+      var k = el.getAttribute('i18n-html');
+      if(DICT[k]) el.innerHTML = DICT[k][lang];
+    });
+    document.querySelectorAll('[i18n-placeholder]').forEach(function(el){
+      var k = el.getAttribute('i18n-placeholder');
+      if(DICT[k]) el.placeholder = DICT[k][lang];
+    });
+    var waBtn = document.getElementById('waBtn');
+    if(waBtn){ waBtn.href = 'https://wa.me/34664064968?text=' + encodeURIComponent(WA_MSG[lang]); }
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+    });
+    document.documentElement.setAttribute('lang', lang);
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){ applyLang(btn.getAttribute('data-lang-btn')); });
+  });
+
+  applyLang('es');
+</script>
 </body>
 </html>
