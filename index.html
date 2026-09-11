@@ -66,21 +66,24 @@
   .reveal.in-view{ opacity: 1; transform: translateY(0); }
   @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
 
-  /* NAV */
-  nav{ position: sticky; top: 18px; z-index: 30; }
-  nav .navbar{ max-width: 1140px; margin: 0 auto; padding: 14px 26px; display:flex; align-items:center; justify-content:space-between; }
-  .brand{ font-family:'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.03em; }
-  nav a.cta{ background: linear-gradient(120deg, var(--flame), var(--crimson)); color: var(--cream); padding: 11px 24px;
-    border-radius: 999px; font-size: 0.85rem; text-decoration:none; font-weight: 600; box-shadow: 0 6px 22px rgba(255,90,31,0.35);
-    transition: transform 0.2s ease; }
+  /* SITE HEADER (nav + ticker glued together, no JS math needed) */
+  .site-header{ position: sticky; top: 0; z-index: 30; background: rgba(17,9,6,0.92); backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%); border-bottom: 1px solid var(--glass-border); }
+  nav .navbar{ max-width: 1140px; margin: 0 auto; padding: 9px 26px; display:flex; align-items:center; justify-content:space-between; gap: 14px; }
+  .brand{ font-family:'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.03em; white-space: nowrap; }
+  .nav-right{ display:flex; align-items:center; gap: 12px; flex-shrink: 0; }
+  nav a.cta{ background: linear-gradient(120deg, var(--flame), var(--crimson)); color: var(--cream); padding: 9px 20px;
+    border-radius: 999px; font-size: 0.78rem; text-decoration:none; font-weight: 600; box-shadow: 0 6px 22px rgba(255,90,31,0.35);
+    transition: transform 0.2s ease; white-space: nowrap; }
   nav a.cta:hover{ transform: translateY(-1px); }
 
-  /* TICKER */
-  .ticker-wrap{ position: relative; z-index: 2; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
-    background: rgba(0,0,0,0.25); overflow: hidden; padding: 12px 0; }
-  .ticker{ display: flex; width: max-content; animation: scroll-left 26s linear infinite; }
-  .ticker span{ font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.06em; color: var(--gold);
-    padding: 0 28px; white-space: nowrap; border-right: 1px solid var(--glass-border); }
+  /* TICKER (plain, sits right below nav inside the sticky header) */
+  .ticker-wrap{ border-top: 1px solid var(--glass-border); overflow: hidden; padding: 6px 0; }
+  .ticker{ display: flex; width: max-content; animation: scroll-left 42s linear infinite; }
+  .ticker span, .ticker a{ font-family: 'Bebas Neue', sans-serif; font-size: 0.8rem; letter-spacing: 0.05em; color: var(--gold);
+    padding: 0 20px; white-space: nowrap; border-right: 1px solid var(--glass-border); text-decoration:none; display:inline-block; transition: color 0.2s ease; }
+  .ticker a:hover{ color: var(--cream); }
+  .exp-card{ scroll-margin-top: 150px; }
   @keyframes scroll-left{ 0%{ transform: translateX(0); } 100%{ transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce){ .ticker{ animation: none; } }
 
@@ -121,6 +124,14 @@
   .art-3{ background: radial-gradient(circle at 50% 35%, rgba(224,27,57,0.9), transparent 55%), radial-gradient(circle at 85% 85%, rgba(25,232,196,0.55), transparent 50%), linear-gradient(135deg, #200a10, #170a06); }
   .art-4{ background: radial-gradient(circle at 30% 70%, rgba(25,232,196,0.8), transparent 55%), radial-gradient(circle at 75% 25%, rgba(255,90,31,0.75), transparent 55%), linear-gradient(135deg, #0a201c, #170a06); }
   .art-5{ background: radial-gradient(circle at 65% 65%, rgba(255,201,60,0.9), transparent 55%), radial-gradient(circle at 20% 20%, rgba(25,232,196,0.6), transparent 55%), linear-gradient(135deg, #1c2008, #170a06); }
+  
+  .art-7{ background: radial-gradient(circle at 30% 30%, rgba(25,232,196,0.85), transparent 55%), radial-gradient(circle at 75% 70%, rgba(108,63,197,0.6), transparent 55%), linear-gradient(135deg, #0a1a2a, #170a06); }
+  .art-8{ background: radial-gradient(circle at 65% 30%, rgba(255,90,31,0.95), transparent 50%), radial-gradient(circle at 25% 75%, rgba(224,27,57,0.7), transparent 55%), linear-gradient(135deg, #241008, #170a06); }
+  .art-9{ background: radial-gradient(circle at 50% 70%, rgba(224,27,57,0.9), transparent 50%), radial-gradient(circle at 70% 20%, rgba(255,201,60,0.7), transparent 55%), linear-gradient(135deg, #260c08, #170a06); }
+  .art-10{ background: radial-gradient(circle at 35% 35%, rgba(255,201,60,0.95), transparent 55%), radial-gradient(circle at 75% 75%, rgba(255,90,31,0.6), transparent 55%), linear-gradient(135deg, #241708, #170a06); }
+  .art-11{ background: radial-gradient(circle at 30% 60%, rgba(25,232,196,0.7), transparent 55%), radial-gradient(circle at 70% 30%, rgba(108,63,197,0.75), transparent 55%), linear-gradient(135deg, #0c1a24, #170a06); }
+  .art-12{ background: radial-gradient(circle at 50% 30%, rgba(255,201,60,0.85), transparent 55%), radial-gradient(circle at 25% 75%, rgba(108,63,197,0.6), transparent 55%), linear-gradient(135deg, #1c1024, #170a06); }
+
   .art-6{ background: radial-gradient(circle at 40% 30%, rgba(224,27,57,0.9), transparent 55%), radial-gradient(circle at 80% 70%, rgba(255,201,60,0.7), transparent 55%), linear-gradient(135deg, #24080f, #170a06); }
   .exp-body{ padding: 28px 26px 30px; display:flex; flex-direction:column; flex-grow:1; }
   .exp-tag{ font-size: 0.78rem; color: var(--cream-dim); margin-bottom: 12px; font-weight: 500; }
@@ -172,16 +183,54 @@
   footer p{ color: var(--cream-dim); font-size: 0.85rem; }
 
   @media (max-width: 860px){
-    .experiences{ grid-template-columns: 1fr; }
-    .process{ grid-template-columns: 1fr; }
+    .experiences{ display:flex; grid-template-columns: unset; overflow-x:auto; scroll-snap-type: x mandatory;
+      gap: 16px; padding: 4px 20px 14px; margin: 0 -20px; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-padding-left: 20px; }
+    .experiences::-webkit-scrollbar{ display:none; }
+    .exp-card{ flex: 0 0 82%; scroll-snap-align: start; }
+    .process{ display:flex; grid-template-columns: unset; overflow-x:auto; scroll-snap-type: x mandatory;
+      gap: 16px; padding: 4px 20px 14px; margin: 0 -20px; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-padding-left: 20px; }
+    .process::-webkit-scrollbar{ display:none; }
+    .step{ flex: 0 0 82%; scroll-snap-align: start; }
+    .swipe-hint{ display:flex; }
+    .stats{ grid-template-columns: 1fr; gap: 16px; }
     .film .wrap{ grid-template-columns: 1fr; }
+    .film-frame{ aspect-ratio: 16/10; }
     form{ grid-template-columns: 1fr; }
+    header.hero{ padding: 90px 0 60px; }
+    .section{ padding: 64px 0; }
+    .lead-card{ padding: 36px 24px; }
+    .closing-card{ padding: 48px 24px; }
+  }
+
+  @media (max-width: 640px){
+    .wrap{ padding: 0 20px; }
+    h1.title{ font-size: clamp(2.6rem, 12vw, 4.2rem); }
+    .hero-sub{ font-size: 1.05rem; }
+    .section-head h2{ font-size: clamp(1.9rem, 8vw, 2.4rem); }
+    .stat-num{ font-size: 2.6rem; }
+    .watermark span{ font-size: 4rem; margin: 0 26px; }
+    .ticker span, .ticker a{ padding: 0 18px; font-size: 0.85rem; }
+    .glass{ backdrop-filter: blur(12px) saturate(140%); -webkit-backdrop-filter: blur(12px) saturate(140%); }
+    .glow{ filter: blur(60px); }
+    input, select, textarea{ font-size: 16px; }
+  }
+
+  @media (max-width: 640px){
+    nav .navbar{ padding: 10px 16px; gap: 8px; }
+    .brand-mark-chip{ width: 32px; height: 32px; }
+    .brand-mark{ width: 18px; height: 18px; }
+    .brand-suffix{ display:none; }
+    .brand{ font-size: 0.95rem; }
+    .nav-right{ gap: 8px; }
+    nav a.cta{ padding: 9px 14px; font-size: 0.72rem; }
+    .lang-select{ font-size: 0.7rem; padding: 8px 26px 8px 10px; }
+    .ticker span, .ticker a{ padding: 0 16px; font-size: 0.8rem; }
   }
 
   .brand-lockup{ display:flex; align-items:center; gap: 12px; }
-  .brand-mark-chip{ width: 42px; height: 42px; border-radius: 50%; background: rgba(0,0,0,0.35); border: 1px solid var(--glass-border);
+  .brand-mark-chip{ width: 32px; height: 32px; border-radius: 50%; background: rgba(0,0,0,0.35); border: 1px solid var(--glass-border);
     display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .brand-mark{ width: 24px; height: 24px; flex-shrink: 0; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+  .brand-mark{ width: 18px; height: 18px; flex-shrink: 0; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
   footer .brand-mark-chip{ width: 34px; height: 34px; }
   footer .brand-mark{ width: 19px; height: 19px; }
 
@@ -201,17 +250,16 @@
     .whatsapp-btn{ padding: 14px; }
   }
 
-  .lang-switch{ display:flex; gap: 6px; margin-right: 6px; }
-  .lang-btn{ background: transparent; border: 1px solid var(--glass-border); color: var(--cream-dim);
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 600; padding: 7px 11px;
-    border-radius: 999px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; }
-  .lang-btn.active{ background: var(--glass-strong); color: var(--cream); border-color: var(--cream-dim); }
-  @media (max-width: 640px){ nav .navbar{ flex-wrap: wrap; gap: 10px; } }
+  .lang-select{ appearance: none; -webkit-appearance: none; background: var(--glass-strong) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FFF6E9" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 10px center / 13px;
+    border: 1px solid var(--glass-border); color: var(--cream); font-family: 'Space Grotesk', sans-serif; font-size: 0.78rem; font-weight: 600;
+    padding: 9px 30px 9px 12px; border-radius: 999px; cursor: pointer; }
+  .lang-select:focus{ outline: 2px solid var(--gold); outline-offset: 1px; }
+  .lang-select option{ background: var(--bg-deep); color: var(--cream); }
 
   /* CUSTOM CURSOR */
   @media (hover:hover) and (pointer:fine){
     body{ cursor: none; }
-    a, button, .exp-card, .lang-btn, summary{ cursor: none; }
+    a, button, .exp-card, .lang-select, summary{ cursor: none; }
   }
   .cursor-dot, .cursor-ring{ position: fixed; top:0; left:0; pointer-events:none; z-index: 100; border-radius: 50%;
     transform: translate(-50%,-50%); will-change: transform; }
@@ -227,6 +275,9 @@
     background: linear-gradient(100deg, var(--gold), var(--flame) 55%, var(--crimson));
     -webkit-background-clip: text; background-clip: text; color: transparent; }
   .stat-label{ margin-top: 10px; color: var(--cream-dim); font-size: 0.95rem; }
+
+  .swipe-hint{ display:none; align-items:center; gap: 8px; color: var(--cream-dim); font-size: 0.82rem; margin: 0 0 18px 20px; }
+  .swipe-hint svg{ width: 15px; height: 15px; }
 
   /* FAQ */
   .faq{ display:flex; flex-direction:column; gap: 14px; max-width: 760px; }
@@ -252,8 +303,9 @@
 </div>
 <div class="speed-lines"></div>
 
+<div class="site-header">
 <nav>
-  <div class="navbar glass">
+  <div class="navbar">
     <div class="brand-lockup"><div class="brand-mark-chip"><svg class="brand-mark" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="navMarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -266,29 +318,47 @@
     <line x1="0" y1="76" x2="62" y2="76" stroke="url(#navMarkGrad)" stroke-width="10" stroke-linecap="round"/>
     <line x1="6" y1="94" x2="56" y2="90" stroke="url(#navMarkGrad)" stroke-width="9" stroke-linecap="round" opacity="0.85"/>
     <circle cx="94" cy="76" r="42" fill="url(#navMarkGrad)"/>
-  </svg></div><span class="brand">FOR A DAY</span></div>
-    <div class="lang-switch"><button type="button" class="lang-btn" data-lang-btn="es">ES</button><button type="button" class="lang-btn" data-lang-btn="en">EN</button></div>
-    <a class="cta" href="#lead" i18n="nav.cta">Solicitar información</a>
+  </svg></div><span class="brand">FOR A DAY<span class="brand-suffix"> EXPERIENCES</span></span></div>
+    <div class="nav-right">
+      <select class="lang-select" id="langSelect" aria-label="Idioma / Language">
+        <option value="es">ES · Español</option>
+        <option value="en">EN · English</option>
+      </select>
+      <a class="cta" href="#lead" i18n="nav.cta">Solicitar información</a>
+    </div>
   </div>
 </nav>
 
 <div class="ticker-wrap">
   <div class="ticker">
     <span>FOR A DAY EXPERIENCES, S.L.</span>
-    <span i18n="ticker.exp1"></span>
-    <span i18n="ticker.exp2"></span>
-    <span i18n="ticker.exp3"></span>
-    <span i18n="ticker.exp4"></span>
-    <span i18n="ticker.exp5"></span>
-    <span i18n="ticker.exp6"></span>
+    <a class="ticker-link" href="#exp-card-1" i18n="ticker.exp1"></a>
+    <a class="ticker-link" href="#exp-card-2" i18n="ticker.exp2"></a>
+    <a class="ticker-link" href="#exp-card-3" i18n="ticker.exp3"></a>
+    <a class="ticker-link" href="#exp-card-4" i18n="ticker.exp4"></a>
+    <a class="ticker-link" href="#exp-card-5" i18n="ticker.exp5"></a>
+    <a class="ticker-link" href="#exp-card-6" i18n="ticker.exp6"></a>
+    <a class="ticker-link" href="#exp-card-7" i18n="ticker.exp7"></a>
+    <a class="ticker-link" href="#exp-card-8" i18n="ticker.exp8"></a>
+    <a class="ticker-link" href="#exp-card-9" i18n="ticker.exp9"></a>
+    <a class="ticker-link" href="#exp-card-10" i18n="ticker.exp10"></a>
+    <a class="ticker-link" href="#exp-card-11" i18n="ticker.exp11"></a>
+    <a class="ticker-link" href="#exp-card-12" i18n="ticker.exp12"></a>
     <span>FOR A DAY EXPERIENCES, S.L.</span>
-    <span i18n="ticker.exp1"></span>
-    <span i18n="ticker.exp2"></span>
-    <span i18n="ticker.exp3"></span>
-    <span i18n="ticker.exp4"></span>
-    <span i18n="ticker.exp5"></span>
-    <span i18n="ticker.exp6"></span>
+    <a class="ticker-link" href="#exp-card-1" i18n="ticker.exp1"></a>
+    <a class="ticker-link" href="#exp-card-2" i18n="ticker.exp2"></a>
+    <a class="ticker-link" href="#exp-card-3" i18n="ticker.exp3"></a>
+    <a class="ticker-link" href="#exp-card-4" i18n="ticker.exp4"></a>
+    <a class="ticker-link" href="#exp-card-5" i18n="ticker.exp5"></a>
+    <a class="ticker-link" href="#exp-card-6" i18n="ticker.exp6"></a>
+    <a class="ticker-link" href="#exp-card-7" i18n="ticker.exp7"></a>
+    <a class="ticker-link" href="#exp-card-8" i18n="ticker.exp8"></a>
+    <a class="ticker-link" href="#exp-card-9" i18n="ticker.exp9"></a>
+    <a class="ticker-link" href="#exp-card-10" i18n="ticker.exp10"></a>
+    <a class="ticker-link" href="#exp-card-11" i18n="ticker.exp11"></a>
+    <a class="ticker-link" href="#exp-card-12" i18n="ticker.exp12"></a>
   </div>
+</div>
 </div>
 
 <header class="hero">
@@ -329,8 +399,9 @@
       <h2 i18n="catalog.h2">Papeles principales, no entradas de grada.</h2>
       <p i18n="catalog.p">Un número reducido de experiencias al año, negociadas de forma exclusiva con clubes, circuitos, tripulaciones y salas.</p>
     </div>
+    <div class="swipe-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 6l6 6-6 6M4 12h16"/></svg><span i18n="swipe.hint">Desliza para ver más</span></div>
     <div class="experiences">
-      <div class="exp-card glass reveal">
+      <div class="exp-card glass reveal" id="exp-card-1">
         <div class="exp-art art-1">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M12 6l3.5 2.5-1.3 4.1H9.8L8.5 8.5 12 6z"/><path d="M3 12h5.8M15.2 12H21M9.5 19.5l1.7-3.4M12.8 16.1l1.7 3.4M9.5 4.5l1.7 3.4M12.8 7.9l1.7-3.4"/></svg>
         </div>
@@ -341,7 +412,7 @@
           <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
         </div>
       </div>
-      <div class="exp-card glass reveal">
+      <div class="exp-card glass reveal" id="exp-card-2">
         <div class="exp-art art-2">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/><path d="M4 10l8 4 8-4"/></svg>
         </div>
@@ -352,7 +423,7 @@
           <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
         </div>
       </div>
-      <div class="exp-card glass reveal">
+      <div class="exp-card glass reveal" id="exp-card-3">
         <div class="exp-art art-3">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 5V2M12 22v-3M5 12H2M22 12h-3M7 7L5 5M19 5l-2 2M7 17l-2 2M19 19l-2-2"/></svg>
         </div>
@@ -363,7 +434,7 @@
           <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
         </div>
       </div>
-      <div class="exp-card glass reveal">
+      <div class="exp-card glass reveal" id="exp-card-4">
         <div class="exp-art art-4">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 16l7-2 5-9 2 1-3 8 6-1 3 3-8 2-2 4-2-1 1-4-6 1-3-2z"/></svg>
         </div>
@@ -374,7 +445,7 @@
           <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
         </div>
       </div>
-      <div class="exp-card glass reveal">
+      <div class="exp-card glass reveal" id="exp-card-5">
         <div class="exp-art art-5">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 19h16M12 19V4l6 9-6 2M9 19l1-6"/></svg>
         </div>
@@ -385,7 +456,7 @@
           <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
         </div>
       </div>
-      <div class="exp-card glass reveal">
+      <div class="exp-card glass reveal" id="exp-card-6">
         <div class="exp-art art-6">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4"/><path d="M12 3v2M20 12h-2"/></svg>
         </div>
@@ -393,6 +464,72 @@
           <div class="exp-tag" i18n="exp6.tag">Música · Cabina principal</div>
           <h3 i18n="exp6.title">DJ headliner por una noche</h3>
           <p class="desc" i18n="exp6.desc">Tu sesión en la cabina principal de una sala o festival, con productor y técnico de sonido profesional a tu lado, ante una pista llena.</p>
+          <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
+        </div>
+      </div>
+      <div class="exp-card glass reveal" id="exp-card-7">
+        <div class="exp-art art-7">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="10" r="5"/><circle cx="12" cy="10" r="2"/><path d="M12 15v6M9 21h6M5 5l1.5 1.5M19 5l-1.5 1.5M4 12h2M18 12h2"/></svg>
+        </div>
+        <div class="exp-body">
+          <div class="exp-tag" i18n="exp7.tag">Espacio · Gravedad cero</div>
+          <h3 i18n="exp7.title">Astronauta por un día</h3>
+          <p class="desc" i18n="exp7.desc">Entrenamiento de vuelo parabólico real, ingravidez incluida, con instructores del mundo aeroespacial y cámaras captando cada segundo flotando.</p>
+          <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
+        </div>
+      </div>
+      <div class="exp-card glass reveal" id="exp-card-8">
+        <div class="exp-art art-8">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 8l2-4h14l2 4M3 8h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8z"/><path d="M3 8l3-4M9 8l3-4M15 8l3-4"/></svg>
+        </div>
+        <div class="exp-body">
+          <div class="exp-tag" i18n="exp8.tag">Cine · Acción real</div>
+          <h3 i18n="exp8.title">Doble de acción por un día</h3>
+          <p class="desc" i18n="exp8.desc">Coreografía de una escena de acción de verdad: caídas controladas, combate escénico y persecución, dirigida por especialistas de cine profesionales.</p>
+          <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
+        </div>
+      </div>
+      <div class="exp-card glass reveal" id="exp-card-9">
+        <div class="exp-art art-9">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 20l6-13 2 4 2-4 6 13z"/><path d="M12 7c.8-1 .8-2.4 0-3.4"/></svg>
+        </div>
+        <div class="exp-body">
+          <div class="exp-tag" i18n="exp9.tag">Aventura · Expedición extrema</div>
+          <h3 i18n="exp9.title">Explorador de volcanes</h3>
+          <p class="desc" i18n="exp9.desc">Expedición guiada hasta el borde de un cráter activo junto a un vulcanólogo, con equipo de seguridad certificado y cámaras siguiendo el ascenso.</p>
+          <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
+        </div>
+      </div>
+      <div class="exp-card glass reveal" id="exp-card-10">
+        <div class="exp-art art-10">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 10a4 4 0 1 1 8 0c1.7.3 3 1.7 3 3.5 0 2-1.8 3.5-4 3.5H9c-2.2 0-4-1.5-4-3.5 0-1.8 1.3-3.2 3-3.5z"/><path d="M8 20h8M9 17v3M15 17v3"/></svg>
+        </div>
+        <div class="exp-body">
+          <div class="exp-tag" i18n="exp10.tag">Gastronomía · Cocina con estrella</div>
+          <h3 i18n="exp10.title">Chef con estrella por un día</h3>
+          <p class="desc" i18n="exp10.desc">Diseñas y cocinas el menú de una noche junto al chef titular de un restaurante con estrella, sirviendo tu propia creación a los comensales.</p>
+          <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
+        </div>
+      </div>
+      <div class="exp-card glass reveal" id="exp-card-11">
+        <div class="exp-art art-11">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="14" r="1.3"/><circle cx="12" cy="11" r="1.3"/><circle cx="16" cy="14" r="1.3"/><circle cx="12" cy="16" r="1.3"/><path d="M3 20c4-6 14-6 18 0"/></svg>
+        </div>
+        <div class="exp-body">
+          <div class="exp-tag" i18n="exp11.tag">Expedición · Polar</div>
+          <h3 i18n="exp11.title">Musher por un día</h3>
+          <p class="desc" i18n="exp11.desc">Lideras tu propio trineo de perros por paisajes nevados, con un musher profesional guiándote y cámaras siguiendo la carrera sobre la nieve.</p>
+          <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
+        </div>
+      </div>
+      <div class="exp-card glass reveal" id="exp-card-12">
+        <div class="exp-art art-12">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 18V5l10-2v13"/><circle cx="7" cy="18" r="2.2"/><circle cx="17" cy="16" r="2.2"/></svg>
+        </div>
+        <div class="exp-body">
+          <div class="exp-tag" i18n="exp12.tag">Música · Sinfónica</div>
+          <h3 i18n="exp12.title">Director de orquesta por una noche</h3>
+          <p class="desc" i18n="exp12.desc">Subes al podio y diriges a una orquesta profesional en un concierto real, con el director titular preparándote la semana previa.</p>
           <div class="exp-price"><span class="pill" i18n="card.pill">Precio bajo consulta</span></div>
         </div>
       </div>
@@ -406,6 +543,7 @@
       <div class="eyebrow" i18n="process.eyebrow">El proceso</div>
       <h2 i18n="process.h2">Tres pasos, un recuerdo que no caduca.</h2>
     </div>
+    <div class="swipe-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 6l6 6-6 6M4 12h16"/></svg><span i18n="swipe.hint">Desliza para ver más</span></div>
     <div class="process">
       <div class="step glass reveal">
         <div class="num">1</div>
@@ -499,6 +637,12 @@
             <option i18n="ticker.exp4">Copiloto de acrobacia</option>
             <option i18n="ticker.exp5">Patrón por un día</option>
             <option i18n="ticker.exp6">DJ headliner por una noche</option>
+            <option i18n="ticker.exp7">Astronauta por un día</option>
+            <option i18n="ticker.exp8">Doble de acción por un día</option>
+            <option i18n="ticker.exp9">Explorador de volcanes</option>
+            <option i18n="ticker.exp10">Chef con estrella por un día</option>
+            <option i18n="ticker.exp11">Musher por un día</option>
+            <option i18n="ticker.exp12">Director de orquesta por una noche</option>
             <option i18n="form.custom">Quiero algo a medida</option>
           </select>
         </div>
@@ -597,6 +741,37 @@
 
 <script>
   var DICT = {
+    "swipe.hint": {es:"Desliza para ver más", en:"Swipe to see more"},
+    "exp7.tag": {es:"Espacio · Gravedad cero", en:"Space · Zero gravity"},
+    "exp7.title": {es:"Astronauta por un día", en:"Astronaut for a day"},
+    "exp7.desc": {es:"Entrenamiento de vuelo parabólico real, ingravidez incluida, con instructores del mundo aeroespacial y cámaras captando cada segundo flotando.",
+                  en:"Real parabolic flight training, weightlessness included, with instructors from the aerospace world and cameras capturing every floating second."},
+    "exp8.tag": {es:"Cine · Acción real", en:"Film · Real action"},
+    "exp8.title": {es:"Doble de acción por un día", en:"Stunt double for a day"},
+    "exp8.desc": {es:"Coreografía de una escena de acción de verdad: caídas controladas, combate escénico y persecución, dirigida por especialistas de cine profesionales.",
+                  en:"Choreography of a real action scene: controlled falls, staged combat and a chase, directed by professional film stunt performers."},
+    "exp9.tag": {es:"Aventura · Expedición extrema", en:"Adventure · Extreme expedition"},
+    "exp9.title": {es:"Explorador de volcanes", en:"Volcano explorer"},
+    "exp9.desc": {es:"Expedición guiada hasta el borde de un cráter activo junto a un vulcanólogo, con equipo de seguridad certificado y cámaras siguiendo el ascenso.",
+                  en:"A guided expedition to the edge of an active crater alongside a volcanologist, with certified safety gear and cameras following the climb."},
+    "exp10.tag": {es:"Gastronomía · Cocina con estrella", en:"Gastronomy · Starred kitchen"},
+    "exp10.title": {es:"Chef con estrella por un día", en:"Starred chef for a day"},
+    "exp10.desc": {es:"Diseñas y cocinas el menú de una noche junto al chef titular de un restaurante con estrella, sirviendo tu propia creación a los comensales.",
+                   en:"You design and cook a night's menu alongside the head chef of a starred restaurant, serving your own creation to the diners."},
+    "exp11.tag": {es:"Expedición · Polar", en:"Expedition · Polar"},
+    "exp11.title": {es:"Musher por un día", en:"Musher for a day"},
+    "exp11.desc": {es:"Lideras tu propio trineo de perros por paisajes nevados, con un musher profesional guiándote y cámaras siguiendo la carrera sobre la nieve.",
+                   en:"You lead your own dog sled across snowy landscapes, guided by a professional musher, with cameras following the run across the snow."},
+    "exp12.tag": {es:"Música · Sinfónica", en:"Music · Symphonic"},
+    "exp12.title": {es:"Director de orquesta por una noche", en:"Orchestra conductor for a night"},
+    "exp12.desc": {es:"Subes al podio y diriges a una orquesta profesional en un concierto real, con el director titular preparándote la semana previa.",
+                   en:"You step onto the podium and conduct a professional orchestra in a real concert, prepared the week before by the resident conductor."},
+    "ticker.exp7": {es:"Astronauta por un día", en:"Astronaut for a day"},
+    "ticker.exp8": {es:"Doble de acción por un día", en:"Stunt double for a day"},
+    "ticker.exp9": {es:"Explorador de volcanes", en:"Volcano explorer"},
+    "ticker.exp10": {es:"Chef con estrella por un día", en:"Starred chef for a day"},
+    "ticker.exp11": {es:"Musher por un día", en:"Musher for a day"},
+    "ticker.exp12": {es:"Director de orquesta por una noche", en:"Orchestra conductor for a night"},
     "stats.s1": {es:"Experiencias al año", en:"Experiences per year"},
     "stats.s2": {es:"Equipo de rodaje dedicado por experiencia", en:"Dedicated film crew per experience"},
     "stats.s3": {es:"A medida, nada enlatado", en:"Bespoke, nothing off-the-shelf"},
@@ -717,15 +892,12 @@
     });
     var waBtn = document.getElementById('waBtn');
     if(waBtn){ waBtn.href = 'https://wa.me/34664064968?text=' + encodeURIComponent(WA_MSG[lang]); }
-    document.querySelectorAll('.lang-btn').forEach(function(btn){
-      btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
-    });
+    if(langSelect){ langSelect.value = lang; }
     document.documentElement.setAttribute('lang', lang);
   }
 
-  document.querySelectorAll('.lang-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){ applyLang(btn.getAttribute('data-lang-btn')); });
-  });
+  var langSelect = document.getElementById('langSelect');
+  if(langSelect){ langSelect.addEventListener('change', function(){ applyLang(this.value); }); }
 
 
   // Custom cursor
@@ -785,6 +957,7 @@
     }, { threshold: 0.4 });
     statEls.forEach(function(el){ statIo.observe(el); });
   }
+
 
   applyLang('es');
 </script>
