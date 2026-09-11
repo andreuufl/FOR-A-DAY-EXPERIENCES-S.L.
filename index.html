@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For A Day Experiences</title>
+<meta name="description" content="Experiencias irrepetibles para gente con posibilidades: sé delantero en un estadio icónico, piloto en un circuito profesional o patrón en una regata, y llévate una película de tu día para siempre.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="For A Day Experiences">
+<meta property="og:description" content="Vive un día que merezca una película. Experiencias exclusivas, rodadas y entregadas como un cortometraje.">
+<meta property="og:image" content="og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="For A Day Experiences">
+<meta name="twitter:description" content="Vive un día que merezca una película.">
+<meta name="twitter:image" content="og-image.png">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNGRkM5M0MiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiNGRjVBMUYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRTAxQjM5Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjQwIiBmaWxsPSIjMTcwQTA2Ii8+CiAgPGc+CiAgICA8bGluZSB4MT0iMjYiIHkxPSI4MiIgeDI9Ijc2IiB5Mj0iODYiIHN0cm9rZT0idXJsKCNnKSIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuODUiLz4KICAgIDxsaW5lIHgxPSIyMCIgeTE9IjEwMCIgeDI9IjgyIiB5Mj0iMTAwIiBzdHJva2U9InVybCgjZykiIHN0cm9rZS13aWR0aD0iMTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPGxpbmUgeDE9IjI2IiB5MT0iMTE4IiB4Mj0iNzYiIHkyPSIxMTQiIHN0cm9rZT0idXJsKCNnKSIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuODUiLz4KICAgIDxjaXJjbGUgY3g9IjExOCIgY3k9IjEwMCIgcj0iNDIiIGZpbGw9InVybCgjZykiLz4KICA8L2c+Cjwvc3ZnPgo=">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -198,10 +207,42 @@
     border-radius: 999px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; }
   .lang-btn.active{ background: var(--glass-strong); color: var(--cream); border-color: var(--cream-dim); }
   @media (max-width: 640px){ nav .navbar{ flex-wrap: wrap; gap: 10px; } }
+
+  /* CUSTOM CURSOR */
+  @media (hover:hover) and (pointer:fine){
+    body{ cursor: none; }
+    a, button, .exp-card, .lang-btn, summary{ cursor: none; }
+  }
+  .cursor-dot, .cursor-ring{ position: fixed; top:0; left:0; pointer-events:none; z-index: 100; border-radius: 50%;
+    transform: translate(-50%,-50%); will-change: transform; }
+  .cursor-dot{ width: 7px; height: 7px; background: var(--gold); box-shadow: 0 0 8px var(--flame); }
+  .cursor-ring{ width: 34px; height: 34px; border: 1.5px solid var(--glass-border); transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease; }
+  .cursor-ring.active{ width: 52px; height: 52px; border-color: var(--gold); }
+  @media (hover:none), (pointer:coarse){ .cursor-dot, .cursor-ring{ display:none; } }
+
+  /* STATS / EXCLUSIVITY STRIP */
+  .stats{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .stat-card{ padding: 36px 28px; text-align:center; }
+  .stat-num{ font-family:'Bebas Neue', sans-serif; font-size: 3.4rem; line-height:1;
+    background: linear-gradient(100deg, var(--gold), var(--flame) 55%, var(--crimson));
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .stat-label{ margin-top: 10px; color: var(--cream-dim); font-size: 0.95rem; }
+
+  /* FAQ */
+  .faq{ display:flex; flex-direction:column; gap: 14px; max-width: 760px; }
+  .faq details{ padding: 6px 26px; }
+  .faq summary{ list-style:none; padding: 18px 0; font-family:'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing:0.01em;
+    color: var(--cream); display:flex; align-items:center; justify-content:space-between; }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{ content:"+"; font-size:1.6rem; color: var(--gold); transition: transform 0.25s ease; }
+  .faq details[open] summary::after{ transform: rotate(45deg); }
+  .faq p{ color: var(--cream-dim); font-size: 0.95rem; padding-bottom: 20px; max-width: 620px; }
 </style>
 </head>
 <body>
 
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 <div class="watermark" id="watermark"></div>
 <div class="energy-field">
   <div class="glow glow-1"></div>
@@ -261,6 +302,25 @@
     </div>
   </div>
 </header>
+
+<section class="section" style="padding-top:0; padding-bottom:70px;">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat-card glass reveal">
+        <div class="stat-num" data-count="12">0</div>
+        <div class="stat-label" i18n="stats.s1">Experiencias al año</div>
+      </div>
+      <div class="stat-card glass reveal">
+        <div class="stat-num" data-count="1">0</div>
+        <div class="stat-label" i18n="stats.s2">Equipo de rodaje dedicado por experiencia</div>
+      </div>
+      <div class="stat-card glass reveal">
+        <div class="stat-num" data-count="100" data-suffix="%">0</div>
+        <div class="stat-label" i18n="stats.s3">A medida, nada enlatado</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="section" id="experiencias">
   <div class="wrap">
@@ -376,6 +436,37 @@
       <h2 i18n="film.h2">No vendemos una tarde. Vendemos el plano que vas a volver a ver.</h2>
       <p i18n="film.p1">Cada experiencia lleva un director, un operador de cámara y un montador asignados desde el primer minuto. No es un vídeo recuerdo: es una pieza narrada, con la estructura de un cortometraje real.</p>
       <p i18n="film.p2">La entrega incluye el corto final, el material en bruto y una selección de fotografías en alta resolución. Tuyo, para siempre.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" i18n="faq.eyebrow">Preguntas frecuentes</div>
+      <h2 i18n="faq.h2">Antes de escribirnos</h2>
+    </div>
+    <div class="faq reveal glass">
+      <details>
+        <summary i18n="faq.q1">¿Es seguro?</summary>
+        <p i18n="faq.a1">Todas las experiencias se realizan con profesionales certificados del entorno (entrenadores, pilotos, patrones) y bajo los protocolos de seguridad de cada disciplina.</p>
+      </details>
+      <details>
+        <summary i18n="faq.q2">¿Cuánto dura la experiencia?</summary>
+        <p i18n="faq.a2">Depende del formato: entre media jornada y un día completo, según la experiencia elegida.</p>
+      </details>
+      <details>
+        <summary i18n="faq.q3">¿Puedo ir acompañado?</summary>
+        <p i18n="faq.a3">Sí, la mayoría de experiencias permiten acompañantes como espectadores; consúltalo al solicitar información.</p>
+      </details>
+      <details>
+        <summary i18n="faq.q4">¿Con cuánta antelación hay que reservar?</summary>
+        <p i18n="faq.a4">Al ser experiencias negociadas con terceros (clubes, circuitos, tripulaciones), recomendamos reservar con varias semanas de margen.</p>
+      </details>
+      <details>
+        <summary i18n="faq.q5">¿Qué pasa si cancelo?</summary>
+        <p i18n="faq.a5">Cada experiencia tiene sus propias condiciones de cancelación, que te detallamos antes de confirmar la reserva.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -506,6 +597,26 @@
 
 <script>
   var DICT = {
+    "stats.s1": {es:"Experiencias al año", en:"Experiences per year"},
+    "stats.s2": {es:"Equipo de rodaje dedicado por experiencia", en:"Dedicated film crew per experience"},
+    "stats.s3": {es:"A medida, nada enlatado", en:"Bespoke, nothing off-the-shelf"},
+    "faq.eyebrow": {es:"Preguntas frecuentes", en:"Frequently asked questions"},
+    "faq.h2": {es:"Antes de escribirnos", en:"Before you reach out"},
+    "faq.q1": {es:"¿Es seguro?", en:"Is it safe?"},
+    "faq.a1": {es:"Todas las experiencias se realizan con profesionales certificados del entorno (entrenadores, pilotos, patrones) y bajo los protocolos de seguridad de cada disciplina.",
+               en:"Every experience is run with certified professionals from that field (coaches, drivers, skippers) and follows the safety protocols of each discipline."},
+    "faq.q2": {es:"¿Cuánto dura la experiencia?", en:"How long does the experience last?"},
+    "faq.a2": {es:"Depende del formato: entre media jornada y un día completo, según la experiencia elegida.",
+               en:"It depends on the format: from half a day to a full day, depending on the experience chosen."},
+    "faq.q3": {es:"¿Puedo ir acompañado?", en:"Can I bring someone with me?"},
+    "faq.a3": {es:"Sí, la mayoría de experiencias permiten acompañantes como espectadores; consúltalo al solicitar información.",
+               en:"Yes, most experiences allow guests as spectators — ask about it when you request information."},
+    "faq.q4": {es:"¿Con cuánta antelación hay que reservar?", en:"How far in advance do I need to book?"},
+    "faq.a4": {es:"Al ser experiencias negociadas con terceros (clubes, circuitos, tripulaciones), recomendamos reservar con varias semanas de margen.",
+               en:"Since these experiences are arranged with third parties (clubs, circuits, crews), we recommend booking several weeks ahead."},
+    "faq.q5": {es:"¿Qué pasa si cancelo?", en:"What happens if I cancel?"},
+    "faq.a5": {es:"Cada experiencia tiene sus propias condiciones de cancelación, que te detallamos antes de confirmar la reserva.",
+               en:"Each experience has its own cancellation terms, which we'll walk you through before confirming your booking."},
     "nav.cta": {es:"Solicitar información", en:"Request information"},
     "ticker.exp1": {es:"Delantero por un día", en:"Striker for a day"},
     "ticker.exp2": {es:"Capitán por un día", en:"Captain for a day"},
@@ -615,6 +726,65 @@
   document.querySelectorAll('.lang-btn').forEach(function(btn){
     btn.addEventListener('click', function(){ applyLang(btn.getAttribute('data-lang-btn')); });
   });
+
+
+  // Custom cursor
+  (function(){
+    var dot = document.getElementById('cursorDot');
+    var ring = document.getElementById('cursorRing');
+    if(!dot || !ring) return;
+    var rx = 0, ry = 0;
+    window.addEventListener('mousemove', function(e){
+      dot.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px) translate(-50%,-50%)';
+      rx = e.clientX; ry = e.clientY;
+    });
+    function loop(){
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+      requestAnimationFrame(loop);
+    }
+    loop();
+    document.querySelectorAll('a, button, .exp-card, summary').forEach(function(el){
+      el.addEventListener('mouseenter', function(){ ring.classList.add('active'); });
+      el.addEventListener('mouseleave', function(){ ring.classList.remove('active'); });
+    });
+  })();
+
+  // Magnetic buttons
+  document.querySelectorAll('.btn-primary').forEach(function(btn){
+    btn.addEventListener('mousemove', function(e){
+      var rect = btn.getBoundingClientRect();
+      var x = e.clientX - rect.left - rect.width/2;
+      var y = e.clientY - rect.top - rect.height/2;
+      btn.style.transform = 'translate(' + (x*0.25) + 'px,' + (y*0.35) + 'px)';
+    });
+    btn.addEventListener('mouseleave', function(){ btn.style.transform = 'translate(0,0)'; });
+  });
+
+  // Count-up stats
+  var statEls = document.querySelectorAll('.stat-num');
+  if('IntersectionObserver' in window && statEls.length){
+    var statIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var el = entry.target;
+          var target = parseInt(el.getAttribute('data-count'), 10);
+          var suffix = el.getAttribute('data-suffix') || '';
+          var start = 0;
+          var duration = 1200;
+          var startTime = null;
+          function step(ts){
+            if(!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            el.textContent = Math.round(progress * target) + suffix;
+            if(progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+          statIo.unobserve(el);
+        }
+      });
+    }, { threshold: 0.4 });
+    statEls.forEach(function(el){ statIo.observe(el); });
+  }
 
   applyLang('es');
 </script>
