@@ -211,7 +211,7 @@
     color: #fff; text-decoration:none; font-weight:600; font-size: 0.9rem;
     padding: 14px 20px; border-radius: 999px;
     box-shadow: 0 10px 28px rgba(18,140,126,0.45);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, bottom 0.3s ease;
   }
   .whatsapp-btn:hover{ transform: translateY(-2px) scale(1.03); box-shadow: 0 14px 34px rgba(18,140,126,0.55); }
   .whatsapp-btn svg{ width: 22px; height: 22px; flex-shrink:0; }
@@ -244,7 +244,7 @@
   .swipe-hint svg{ width: 15px; height: 15px; }
 
   /* FAQ */
-  .faq{ display:flex; flex-direction:column; gap: 14px; max-width: 760px; }
+  .faq{ display:flex; flex-direction:column; gap: 14px; max-width: 760px; margin: 0 auto; }
   .faq details{ padding: 6px 26px; }
   .faq summary{ list-style:none; padding: 18px 0; font-family:'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing:0.01em;
     color: var(--cream); display:flex; align-items:center; justify-content:space-between; }
@@ -289,6 +289,13 @@
   @keyframes dotBlink{ 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
   .urgency-toast p{ color:var(--cream); font-size:0.9rem; margin-bottom:14px; padding-right:14px; }
   .urgency-toast a.btn-primary{ display:inline-block; padding:10px 20px; font-size:0.82rem; }
+
+
+  @media (max-width: 640px){
+    .cookie-banner{ left: 16px; right: 16px; bottom: 16px; padding: 18px 20px; }
+    .urgency-toast{ left: 16px; right: 16px; max-width: none; bottom: 16px; padding: 16px 18px; }
+    .urgency-toast p{ padding-right: 6px; }
+  }
 
   /* ===== RESPONSIVE (kept at the end on purpose, so these always win the cascade) ===== */
   @media (prefers-reduced-motion: reduce){ .glow{ animation: none !important; } }
@@ -1097,7 +1104,8 @@
   initCarouselDots('processCarousel', 'processDots');
 
 
-  // Cookie consent banner
+  // Cookie consent banner + urgency toast, coordinated so they never overlap each other
+  // or the WhatsApp button.
   (function(){
     function getCookie(name){
       var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -1108,45 +1116,73 @@
       d.setTime(d.getTime() + days*24*60*60*1000);
       document.cookie = name + '=' + value + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
     }
-    var banner = document.getElementById('cookieBanner');
-    if(!banner) return;
-    if(!getCookie('fad_cookie_consent')){
-      banner.classList.add('show');
+
+    var waBtn = document.querySelector('.whatsapp-btn');
+    function repositionWhatsapp(){
+      if(!waBtn) return;
+      var base = window.innerWidth <= 520 ? 20 : 26;
+      var extra = 0;
+      [cookieBanner, urgencyToast].forEach(function(el){
+        if(el && el.classList.contains('show')){
+          var h = el.getBoundingClientRect().height;
+          extra = Math.max(extra, h + 16);
+        }
+      });
+      waBtn.style.bottom = (base + extra) + 'px';
     }
+    window.addEventListener('resize', repositionWhatsapp);
+
+    var cookieBanner = document.getElementById('cookieBanner');
     var acceptBtn = document.getElementById('cookieAccept');
     var rejectBtn = document.getElementById('cookieReject');
-    if(acceptBtn) acceptBtn.addEventListener('click', function(){ setCookie('fad_cookie_consent','accepted',365); banner.classList.remove('show'); });
-    if(rejectBtn) rejectBtn.addEventListener('click', function(){ setCookie('fad_cookie_consent','rejected',365); banner.classList.remove('show'); });
-  })();
-
-
-  // Urgency toast (based on the real "12 experiences a year" policy — appears once per visit)
-  (function(){
     var toast = document.getElementById('urgencyToast');
     var closeBtn = document.getElementById('urgencyClose');
-    if(!toast) return;
-    var shown = false, dismissed = false;
-    function showToast(){
-      if(shown || dismissed) return;
-      shown = true;
-      toast.classList.add('show');
+
+    function maybeStartUrgencyTimer(){
+      if(!toast) return;
+      setTimeout(function(){
+        toast.classList.add('show');
+        repositionWhatsapp();
+      }, 6000);
     }
-    setTimeout(showToast, 6000);
-    function dismiss(){
-      toast.classList.remove('show');
-      dismissed = true;
+
+    if(cookieBanner){
+      if(!getCookie('fad_cookie_consent')){
+        cookieBanner.classList.add('show');
+        repositionWhatsapp();
+      } else {
+        maybeStartUrgencyTimer();
+      }
+      function resolveCookieChoice(value){
+        setCookie('fad_cookie_consent', value, 365);
+        cookieBanner.classList.remove('show');
+        repositionWhatsapp();
+        maybeStartUrgencyTimer();
+      }
+      if(acceptBtn) acceptBtn.addEventListener('click', function(){ resolveCookieChoice('accepted'); });
+      if(rejectBtn) rejectBtn.addEventListener('click', function(){ resolveCookieChoice('rejected'); });
+    } else {
+      maybeStartUrgencyTimer();
     }
-    if(closeBtn) closeBtn.addEventListener('click', dismiss);
-    toast.querySelector('a.btn-primary').addEventListener('click', dismiss);
-    // Hide automatically once the person reaches the lead form — they don't need the nudge anymore
-    var leadSection = document.getElementById('lead');
-    if(leadSection && 'IntersectionObserver' in window){
-      var leadIo = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){ if(entry.isIntersecting) dismiss(); });
-      }, { threshold: 0.2 });
-      leadIo.observe(leadSection);
+
+    if(toast && closeBtn){
+      function dismissToast(){
+        toast.classList.remove('show');
+        repositionWhatsapp();
+      }
+      closeBtn.addEventListener('click', dismissToast);
+      var toastCta = toast.querySelector('a.btn-primary');
+      if(toastCta) toastCta.addEventListener('click', dismissToast);
+      var leadSection = document.getElementById('lead');
+      if(leadSection && 'IntersectionObserver' in window){
+        var leadIo = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){ if(entry.isIntersecting) dismissToast(); });
+        }, { threshold: 0.2 });
+        leadIo.observe(leadSection);
+      }
     }
   })();
+
 
   applyLang('es');
 </script>
