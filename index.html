@@ -269,6 +269,27 @@
   .cookie-reject{ background: transparent; color: var(--cream-dim); }
   .cookie-banner a{ color: var(--gold); text-decoration: underline; }
 
+
+  .urgency-toast{ position: fixed; left: 20px; bottom: 20px; z-index: 85; max-width: 340px;
+    padding: 18px 20px; transform: translateY(140%); opacity: 0; transition: transform 0.5s cubic-bezier(.2,.9,.3,1.2), opacity 0.4s ease;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.45); }
+  .urgency-toast.show{ transform: translateY(0); opacity: 1; }
+  .urgency-toast::before{ content:""; position:absolute; inset:-2px; border-radius:22px; z-index:-1;
+    background: linear-gradient(120deg, var(--flame), var(--gold), var(--crimson)); opacity: 0.55; filter: blur(10px);
+    animation: urgencyPulse 2.6s ease-in-out infinite; }
+  @keyframes urgencyPulse{ 0%,100%{ opacity:0.35; } 50%{ opacity:0.7; } }
+  @media (prefers-reduced-motion: reduce){ .urgency-toast::before{ animation:none; } }
+  .urgency-close{ position:absolute; top:10px; right:12px; background:none; border:none; color:var(--cream-dim);
+    font-size: 1.1rem; line-height:1; cursor:pointer; padding: 4px; }
+  .urgency-close:hover{ color:var(--cream); }
+  .urgency-toast .urgency-eyebrow{ display:flex; align-items:center; gap:7px; color:var(--gold); font-size:0.72rem;
+    font-weight:700; letter-spacing:0.06em; margin-bottom:8px; }
+  .urgency-toast .urgency-eyebrow .dot{ width:7px; height:7px; border-radius:50%; background:var(--flame);
+    box-shadow:0 0 10px var(--flame); animation: dotBlink 1.6s ease-in-out infinite; }
+  @keyframes dotBlink{ 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
+  .urgency-toast p{ color:var(--cream); font-size:0.9rem; margin-bottom:14px; padding-right:14px; }
+  .urgency-toast a.btn-primary{ display:inline-block; padding:10px 20px; font-size:0.82rem; }
+
   /* ===== RESPONSIVE (kept at the end on purpose, so these always win the cascade) ===== */
   @media (prefers-reduced-motion: reduce){ .glow{ animation: none !important; } }
 
@@ -747,6 +768,13 @@
   </div>
 </footer>
 
+<div class="urgency-toast glass" id="urgencyToast">
+  <button class="urgency-close" id="urgencyClose" aria-label="Cerrar">&times;</button>
+  <div class="urgency-eyebrow"><span class="dot"></span><span i18n="urgency.eyebrow">Disponibilidad limitada</span></div>
+  <p i18n="urgency.text">Solo organizamos 12 experiencias al año. Las fechas más buscadas se reservan con meses de antelación.</p>
+  <a class="btn-primary" href="#lead" i18n="urgency.cta">Consultar mi fecha</a>
+</div>
+
 <div class="cookie-banner glass" id="cookieBanner">
   <p i18n="cookie.text">Usamos una cookie técnica para recordar tu preferencia de idioma y de este mismo aviso. No usamos cookies de analítica ni publicidad. <a href="cookies.html" i18n="cookie.more">Más información</a>.</p>
   <div class="cookie-actions">
@@ -808,6 +836,9 @@
 
 <script>
   var DICT = {
+    "urgency.eyebrow": {es:"Disponibilidad limitada", en:"Limited availability"},
+    "urgency.text": {es:"Solo organizamos 12 experiencias al año. Las fechas más buscadas se reservan con meses de antelación.", en:"We only run 12 experiences a year. The most requested dates get booked months ahead."},
+    "urgency.cta": {es:"Consultar mi fecha", en:"Check my date"},
     "footer.legal": {es:"Aviso legal", en:"Legal notice"},
     "footer.privacy": {es:"Privacidad", en:"Privacy"},
     "footer.cookies": {es:"Cookies", en:"Cookies"},
@@ -1086,6 +1117,35 @@
     var rejectBtn = document.getElementById('cookieReject');
     if(acceptBtn) acceptBtn.addEventListener('click', function(){ setCookie('fad_cookie_consent','accepted',365); banner.classList.remove('show'); });
     if(rejectBtn) rejectBtn.addEventListener('click', function(){ setCookie('fad_cookie_consent','rejected',365); banner.classList.remove('show'); });
+  })();
+
+
+  // Urgency toast (based on the real "12 experiences a year" policy — appears once per visit)
+  (function(){
+    var toast = document.getElementById('urgencyToast');
+    var closeBtn = document.getElementById('urgencyClose');
+    if(!toast) return;
+    var shown = false, dismissed = false;
+    function showToast(){
+      if(shown || dismissed) return;
+      shown = true;
+      toast.classList.add('show');
+    }
+    setTimeout(showToast, 6000);
+    function dismiss(){
+      toast.classList.remove('show');
+      dismissed = true;
+    }
+    if(closeBtn) closeBtn.addEventListener('click', dismiss);
+    toast.querySelector('a.btn-primary').addEventListener('click', dismiss);
+    // Hide automatically once the person reaches the lead form — they don't need the nudge anymore
+    var leadSection = document.getElementById('lead');
+    if(leadSection && 'IntersectionObserver' in window){
+      var leadIo = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){ if(entry.isIntersecting) dismiss(); });
+      }, { threshold: 0.2 });
+      leadIo.observe(leadSection);
+    }
   })();
 
   applyLang('es');
